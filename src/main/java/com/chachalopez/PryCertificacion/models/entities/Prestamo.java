@@ -1,7 +1,7 @@
 package com.chachalopez.PryCertificacion.models.entities;
 
 import java.io.Serializable;
-import java.util.Calendar;
+
 import java.util.List;
 
 import javax.persistence.Basic;

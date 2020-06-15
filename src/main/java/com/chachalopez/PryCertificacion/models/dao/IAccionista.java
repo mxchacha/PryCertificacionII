@@ -1,5 +1,10 @@
 package com.chachalopez.PryCertificacion.models.dao;
 
-public interface IAccionista {
+import org.springframework.data.repository.CrudRepository;
+
+import com.chachalopez.PryCertificacion.models.entities.Accionista;
+
+
+public interface IAccionista extends CrudRepository<Accionista, Integer>{
 
 }

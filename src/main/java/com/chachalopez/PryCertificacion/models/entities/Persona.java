@@ -1,5 +1,6 @@
 package com.chachalopez.PryCertificacion.models.entities;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import javax.persistence.Basic;
@@ -119,7 +120,16 @@ public abstract class Persona {
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
-	
+//------------------------------ METODOS ----------------------
+	@Override
+	public String toString() {
+		return super.toString();
+	}	
+	//este metodo ayuda a que se retorne un la fecha con un formato y no toda la fecha que retorna con un monton de letras....
+	public String fechaNac() {
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MMM/yyyy");
+		return sdf.format(fechaNacimiento.getTime());
+	}	
 	
 	
 	

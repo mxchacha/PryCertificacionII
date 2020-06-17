@@ -130,12 +130,11 @@ public class Prestamo implements Serializable {
 	}
 	
 //------------------------------ METODOS ----------------------
+	
 	@Override
 	public String toString() {
-		return this.getIdprestamo().toString();
+		return this.getNumPrestamo();
 	}
-	
-
 	
 
 	

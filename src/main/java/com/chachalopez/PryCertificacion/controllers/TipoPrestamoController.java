@@ -15,7 +15,7 @@ import com.chachalopez.PryCertificacion.models.entities.TipoPrestamo;
 import com.chachalopez.PryCertificacion.services.ITipoPrestamoService;
 
 @Controller
-@RequestMapping(value="/tipoprestamo")
+@RequestMapping(value="/tipoPrestamo")
 
 public class TipoPrestamoController {
 	
@@ -45,7 +45,7 @@ public class TipoPrestamoController {
 	  @GetMapping(value="/update/{id}")
 	  public String update(@PathVariable(value="id") Integer id,Model model) {
 		  TipoPrestamo tipoPrestamo = srvTipoPrestamo.findById(id);
-		  model.addAttribute("tipoprestamo", tipoPrestamo);
+		  model.addAttribute("tipoPrestamo", tipoPrestamo);
 		  model.addAttribute("title", "Actualizando el registro de " + tipoPrestamo.toString());/*Crear en la Entidad un metodo TpString*/
 		  return "tipoPrestamo/form";
 	  }

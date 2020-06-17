@@ -81,6 +81,10 @@ public class TipoCuenta implements Serializable {
 		this.descripcion = descripcion;
 	}
 	
+	@Override
+	public String toString() {
+		return this.getNombre();
+	}
 	
 
 }

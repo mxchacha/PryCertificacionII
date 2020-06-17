@@ -4,13 +4,12 @@
 <body id="page-top">
 
 	<div id="wrapper">
-		<ul th:replace="layout :: frgSideBar"></ul>
-
+		
 		<div id="content-wrapper" class="d-flex flex-column">
 
 			<div id="content">
 
-				<nav th:replace="layout :: frgTopBar"></nav>
+				<nav th:replace="layout :: frgSideBar"></nav>
 
 				<!-- Begin Page Content -->
 				<div class="container-fluid">
@@ -28,19 +27,19 @@
 								<th>C&eacute;dula</th>
 								<th>Fecha de nacimiento</th>
 								<th><a class="btn btn-sm btn-success"
-									th:href="@{/alumno/create}">&nbsp;Nuevo</a></th>
+									th:href="@{/accionista/create}">&nbsp;Nuevo</a></th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr th:each="a : ${alumnos}">
+							<tr th:each="a : ${accionistas}">
 								<td th:text="${a.nombre}"></td>
 								<td th:text="${a.apellido}"></td>
 								<td th:text="${a.cedula}"></td>
 								<td th:text="${a.fechaNac()}"></td>
 								<td><a class="btn btn-sm btn-warning"
-									th:href="@{/alumno/update/} + ${a.idpersona}">&nbsp;Actualizar</a>
+									th:href="@{/accionista/update/} + ${a.idpersona}">&nbsp;Actualizar</a>
 									<a class="btn btn-sm btn-info"
-									th:href="@{/alumno/retrieve/} + ${a.idpersona}">&nbsp;Consultar</a>
+									th:href="@{/accionista/retrieve/} + ${a.idpersona}">&nbsp;Consultar</a>
 								</td>
 							</tr>
 						</tbody>

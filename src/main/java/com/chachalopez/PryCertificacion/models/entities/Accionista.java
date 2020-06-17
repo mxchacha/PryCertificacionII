@@ -53,7 +53,10 @@ public class Accionista extends Persona implements Serializable{
 		this.capitalIngresado = capitalIngresado;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return this.getApellido()+ " "+ this.getNombre();
+	}
 	
 	
 	

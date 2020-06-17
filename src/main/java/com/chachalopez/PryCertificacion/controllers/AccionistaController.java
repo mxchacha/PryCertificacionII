@@ -27,7 +27,7 @@ public class AccionistaController {
 	  @GetMapping(value="/create")
 	  public String create(Model model) {
 		  Accionista accionista=new Accionista();
-		  model.addAttribute("title", "Registro de nuevo alumn@");
+		  model.addAttribute("title", "Registro de nuevo accionista");
 		  model.addAttribute("accionista", accionista);/*Similar al ViewBag*/
 		  return "accionista/form";/*Ubicación de la vista*/
 	  }

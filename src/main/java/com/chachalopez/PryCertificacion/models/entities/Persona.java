@@ -8,6 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @MappedSuperclass
 public abstract class Persona {
@@ -27,7 +31,9 @@ public abstract class Persona {
 	@Column(name="cedula")
 	private String cedula;
 	
-	@Column(name="fechaNacimiento")
+	@Column(name = "fecha_nacimiento")
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")	
 	private Calendar fechaNacimiento;
 	
 	@Column(name="sexo")
@@ -79,6 +85,8 @@ public abstract class Persona {
 	public void setCedula(String cedula) {
 		this.cedula = cedula;
 	}
+
+	
 
 	public Calendar getFechaNacimiento() {
 		return fechaNacimiento;

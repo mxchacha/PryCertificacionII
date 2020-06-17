@@ -16,7 +16,6 @@ import com.chachalopez.PryCertificacion.services.IAccionistaService;
 
 @Controller
 @RequestMapping(value="/accionista")
-
 public class AccionistaController {
 	
 	  @Autowired

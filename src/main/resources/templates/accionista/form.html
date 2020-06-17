@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="home :: frgHead"></head>
+<head th:replace="layout :: frgHead"></head>
 <body id="page-top">
 
 	<div id="wrapper">
@@ -10,7 +10,7 @@
 
 			<div id="content">
 
-				<nav th:replace="layout :: frgTopBar"></nav>
+				<nav th:replace="layout :: frgSideBar"></nav>
 
 				<!-- Begin Page Content -->
 				<div class="container-fluid">
@@ -69,11 +69,11 @@
 												<div class="form-group">
 													<div class="col-sm-6 mb-3 mb-sm-0">
 														<label class="radio-inline"><input type="radio"
-															th:field="*{sexo}" value="M" checked />&nbsp;Mujer</label>
+															th:field="*{sexo}" value="Mujer" checked />&nbsp;Mujer</label>
 													</div>
 													<div class="col-sm-6">
 														<label class="radio-inline"><input type="radio"
-															th:field="*{sexo}" value="H" />&nbsp;Hombre</label>
+															th:field="*{sexo}" value="Hombre" />&nbsp;Hombre</label>
 													</div>
 												</div>
 

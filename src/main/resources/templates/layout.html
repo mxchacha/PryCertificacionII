@@ -16,19 +16,19 @@
     <meta name="author" content="">
 
     <!-- Site Icons -->
-    <link rel="shortcut icon" href="#" type="image/x-icon" />
-    <link rel="apple-touch-icon" href="#" />
+    <link rel="shortcut icon" th:href="@{/#}" type="image/x-icon" />
+    <link rel="apple-touch-icon" th:href="@{/#}" />
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link  th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
     <!-- Pogo Slider CSS -->
-    <link rel="stylesheet" href="css/pogo-slider.min.css" />
+    <link  href="@{/css/pogo-slider.min.css}" rel="stylesheet" />
     <!-- Site CSS -->
-    <link rel="stylesheet" href="css/style.css" />
+    <link  href="@{/css/style.css}" rel="stylesheet" />
     <!-- Responsive CSS -->
-    <link rel="stylesheet" href="css/responsive.css" />
+    <link  href="@{/css/responsive.css}"rel="stylesheet" />
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/custom.css" />
+    <link  href="@{/css/custom.css}" rel="stylesheet"/>
 
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -49,7 +49,7 @@
     <!-- END LOADER -->
 
     <!-- Start header -->
-    <header class="top-header">
+    <header th:fragment="frgSideBar" class="top-header">
         <div class="header_top">
             
             <div class="container">
@@ -148,7 +148,7 @@
 
     
     <!-- Start Footer -->
-    <footer class="footer-box">
+    <footer th:fragment="frgFooter" class="footer-box">
         <div class="container">
             <div class="row">
                <div class="col-md-12 white_fonts">
@@ -219,19 +219,19 @@
     <a href="#" id="scroll-to-top" class="hvr-radial-out"><i class="fa fa-angle-up"></i></a>
 
     <!-- ALL JS FILES -->
-    <script src="js/jquery.min.js"></script>
-	<script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script th:src="@{/js/jquery.min.js}"></script>
+	<script th:src="@{/js/popper.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
     <!-- ALL PLUGINS -->
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/jquery.pogo-slider.min.js"></script>
-    <script src="js/slider-index.js"></script>
-    <script src="js/smoothscroll.js"></script>
-    <script src="js/form-validator.min.js"></script>
-    <script src="js/contact-form-script.js"></script>
-    <script src="js/isotope.min.js"></script>
-    <script src="js/images-loded.min.js"></script>
-    <script src="js/custom.js"></script>
+    <script th:src="@{/js/jquery.magnific-popup.min.js}"></script>
+    <script th:src="@{/js/jquery.pogo-slider.min.js}"></script>
+    <script th:src="@{/js/slider-index.js}"></script>
+    <script th:src="@{/js/smoothscroll.js}"></script>
+    <script th:src="@{/js/form-validator.min.js}"></script>
+    <script th:src="@{/js/contact-form-script.js}"></script>
+    <script th:src="@{/js/isotope.min.js}"></script>
+    <script th:src="@{/js/images-loded.min.js}"></script>
+    <script th:src="@{/js/custom.js}"></script>
 	
 </body>
 

@@ -1,6 +1,7 @@
 package com.chachalopez.PryCertificacion.models.entities;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import javax.persistence.Basic;
@@ -12,6 +13,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name="depositos")
@@ -28,6 +33,8 @@ public class Deposito implements Serializable {
 	private Integer iddeposito;
 	
 	@Column(name="fecha_deposito")
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")	
 	private Calendar fechaDeposito;
 	
 	@Column(name="monto")
@@ -73,7 +80,16 @@ public class Deposito implements Serializable {
 		this.monto = monto;
 	}
 	
-	
+//------------------------------ METODOS ----------------------
+	@Override
+	public String toString() {
+		return this.getIddeposito().toString();
+	}
+	//este metodo ayuda a que se retorne un la fecha con un formato y no toda la fecha que retorna con un monton de letras....
+	public String fechaDep() {
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MMM/yyyy");
+		return sdf.format(fechaDeposito.getTime());
+	}
 	
 	
 	

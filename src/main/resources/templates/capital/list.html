@@ -4,13 +4,12 @@
 <body id="page-top">
 
 	<div id="wrapper">
-		<ul th:replace="layout :: frgSideBar"></ul>
-
+		
 		<div id="content-wrapper" class="d-flex flex-column">
 
 			<div id="content">
 
-				<nav th:replace="layout :: frgTopBar"></nav>
+				<nav th:replace="layout :: frgSideBar"></nav>
 
 				<!-- Begin Page Content -->
 				<div class="container-fluid">
@@ -23,24 +22,18 @@
 					<table class="table table-hover">
 						<thead>
 							<tr>
-								<th>Nombre</th>
-								<th>Apellido</th>
-								<th>C&eacute;dula</th>
-								<th>Fecha de nacimiento</th>
+								<th>Fondo</th>
 								<th><a class="btn btn-sm btn-success"
-									th:href="@{/alumno/create}">&nbsp;Nuevo</a></th>
+									th:href="@{/capital/create}">&nbsp;Nuevo</a></th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr th:each="a : ${alumnos}">
-								<td th:text="${a.nombre}"></td>
-								<td th:text="${a.apellido}"></td>
-								<td th:text="${a.cedula}"></td>
-								<td th:text="${a.fechaNac()}"></td>
+							<tr th:each="c : ${capitales}">
+								<td th:text="${c.fondo}"></td>
 								<td><a class="btn btn-sm btn-warning"
-									th:href="@{/alumno/update/} + ${a.idpersona}">&nbsp;Actualizar</a>
+									th:href="@{/capital/update/} + ${c.idcapital}">&nbsp;Actualizar</a>
 									<a class="btn btn-sm btn-info"
-									th:href="@{/alumno/retrieve/} + ${a.idpersona}">&nbsp;Consultar</a>
+									th:href="@{/capital/retrieve/} + ${c.idcapital}">&nbsp;Consultar</a>
 								</td>
 							</tr>
 						</tbody>

@@ -129,6 +129,11 @@ public class Prestamo implements Serializable {
 		this.tiempo = tiempo;
 	}
 	
+//------------------------------ METODOS ----------------------
+	@Override
+	public String toString() {
+		return this.getIdprestamo().toString();
+	}
 	
 
 	

@@ -46,7 +46,7 @@ public class PrestamoController {
 	  public String update(@PathVariable(value="id") Integer id,Model model) {
 		  Prestamo prestamo = srvPrestamo.findById(id);
 		  model.addAttribute("prestamo", prestamo);
-		  model.addAttribute("title", "Actualizando el registro de " + prestamo.toString());/*Crear en la Entidad un metodo TpString*/
+		  model.addAttribute("title", "Actualizando el registro con ID " + prestamo);/*Crear en la Entidad un metodo TpString*/
 		  return "prestamo/form";
 	  }
 	  

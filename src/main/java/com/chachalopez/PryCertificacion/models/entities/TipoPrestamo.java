@@ -90,6 +90,10 @@ public class TipoPrestamo implements Serializable{
 		this.plazo = plazo;
 	}
 	
-	
+//------------------------------ METODOS ----------------------
+	@Override
+	public String toString() {
+		return this.getNombre();
+	}
 	
 }

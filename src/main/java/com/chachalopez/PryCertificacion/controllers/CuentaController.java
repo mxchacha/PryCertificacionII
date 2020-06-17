@@ -46,7 +46,7 @@ public class CuentaController {
 	  public String update(@PathVariable(value="id") Integer id,Model model) {
 		  Cuenta cuenta = srvCuenta.findById(id);
 		  model.addAttribute("cuenta", cuenta);
-		  model.addAttribute("title", "Actualizando el registro de " + cuenta.toString());/*Crear en la Entidad un metodo TpString*/
+		  model.addAttribute("title", "Actualizando el registro " + cuenta);/*Crear en la Entidad un metodo TpString*/
 		  return "cuenta/form";
 	  }
 	  

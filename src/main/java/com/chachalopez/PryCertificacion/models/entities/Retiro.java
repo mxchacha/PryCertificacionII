@@ -80,7 +80,11 @@ public class Retiro implements Serializable{
 		this.monto = monto;
 	}
 	
-	
+//------------------------------ METODOS ----------------------
+	@Override
+	public String toString() {
+		return this.getIdretiro().toString();
+	}
 	
 
 }

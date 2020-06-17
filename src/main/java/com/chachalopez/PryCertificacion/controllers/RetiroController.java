@@ -46,7 +46,7 @@ public class RetiroController {
 	  public String update(@PathVariable(value="id") Integer id,Model model) {
 		  Retiro retiro = srvRetiro.findById(id);
 		  model.addAttribute("retiro", retiro);
-		  model.addAttribute("title", "Actualizando el registro de " + retiro.toString());/*Crear en la Entidad un metodo TpString*/
+		  model.addAttribute("title", "Actualizando el registro con ID" + retiro);/*Crear en la Entidad un metodo TpString*/
 		  return "retiro/form";
 	  }
 	  

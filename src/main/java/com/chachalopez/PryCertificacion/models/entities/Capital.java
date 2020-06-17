@@ -79,7 +79,11 @@ public class Capital implements Serializable {
 	public void setFondo(Float fondo) {
 		this.fondo = fondo;
 	}
-	
+//------------------------------ METODOS ----------------------
+	@Override
+	public String toString() {
+		return this.getIdcapital().toString();
+	}
 	
 
 }

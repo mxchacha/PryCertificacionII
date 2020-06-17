@@ -4,13 +4,12 @@
 <body id="page-top">
 
 	<div id="wrapper">
-		<ul th:replace="layout :: frgSideBar"></ul>
-
+		
 		<div id="content-wrapper" class="d-flex flex-column">
 
 			<div id="content">
 
-				<nav th:replace="layout :: frgTopBar"></nav>
+				<nav th:replace="layout :: frgSideBar"></nav>
 
 				<!-- Begin Page Content -->
 				<div class="container-fluid">
@@ -27,20 +26,24 @@
 								<th>Apellido</th>
 								<th>C&eacute;dula</th>
 								<th>Fecha de nacimiento</th>
+								<th>Fecha de ingreso</th>
+								<th>Monto de ingreso</th>
 								<th><a class="btn btn-sm btn-success"
-									th:href="@{/alumno/create}">&nbsp;Nuevo</a></th>
+									th:href="@{/cliente/create}">&nbsp;Nuevo</a></th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr th:each="a : ${alumnos}">
-								<td th:text="${a.nombre}"></td>
-								<td th:text="${a.apellido}"></td>
-								<td th:text="${a.cedula}"></td>
-								<td th:text="${a.fechaNac()}"></td>
+							<tr th:each="c : ${clientes}">
+								<td th:text="${c.nombre}"></td>
+								<td th:text="${c.apellido}"></td>
+								<td th:text="${c.cedula}"></td>
+								<td th:text="${c.fechaNac()}"></td>
+								<td th:text="${c.fechaIngr()}"></td>
+								<td th:text="${c.montoIngreso}"></td>
 								<td><a class="btn btn-sm btn-warning"
-									th:href="@{/alumno/update/} + ${a.idpersona}">&nbsp;Actualizar</a>
+									th:href="@{/cliente/update/} + ${c.idpersona}">&nbsp;Actualizar</a>
 									<a class="btn btn-sm btn-info"
-									th:href="@{/alumno/retrieve/} + ${a.idpersona}">&nbsp;Consultar</a>
+									th:href="@{/cliente/retrieve/} + ${c.idpersona}">&nbsp;Consultar</a>
 								</td>
 							</tr>
 						</tbody>

@@ -1,6 +1,7 @@
 package com.chachalopez.PryCertificacion.models.entities;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 
@@ -15,6 +16,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name="cuentas")
@@ -34,6 +39,8 @@ public class Cuenta implements Serializable {
 	private String numCuenta;
 	
 	@Column(name="fecha_apertura")
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")	
 	private Calendar fechaApertura;
 	
 	
@@ -155,8 +162,16 @@ public class Cuenta implements Serializable {
 		this.fechaApertura = fechaApertura;
 	}
 	
-	
-	
+//------------------------------ METODOS ----------------------
+	@Override
+	public String toString() {
+		return this.getNumCuenta();
+	}	
+	//este metodo ayuda a que se retorne un la fecha con un formato y no toda la fecha que retorna con un monton de letras....
+	public String fechaAper() {
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MMM/yyyy");
+		return sdf.format(fechaApertura.getTime());
+	}
 	
 	
 	

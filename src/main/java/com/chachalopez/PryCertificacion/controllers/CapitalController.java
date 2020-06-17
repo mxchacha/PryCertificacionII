@@ -45,7 +45,7 @@ public class CapitalController {
 	  public String update(@PathVariable(value="id") Integer id,Model model) {
 		  Capital capital = srvCapital.findById(id);
 		  model.addAttribute("capital", capital);
-		  model.addAttribute("title", "Actualizando el registro de " + capital.toString());/*Crear en la Entidad un metodo TpString*/
+		  model.addAttribute("title", "Actualizando el registro con ID " + capital);/*Crear en la Entidad un metodo TpString*/
 		  return "capital/form";
 	  }
 	  
@@ -65,7 +65,7 @@ public class CapitalController {
 	  @GetMapping(value="/list")
 		public String list(Model model) {
 			List<Capital> capitales = this.srvCapital.findAll();
-			model.addAttribute("capitals", capitales);
+			model.addAttribute("capitales", capitales);
 			model.addAttribute("title", "Listado de capitales");
 			return "capital/list";		
 		}

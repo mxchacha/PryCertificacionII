@@ -46,7 +46,7 @@ public class DepositoController {
 	  public String update(@PathVariable(value="id") Integer id,Model model) {
 		  Deposito deposito = srvDeposito.findById(id);
 		  model.addAttribute("deposito", deposito);
-		  model.addAttribute("title", "Actualizando el registro de " + deposito.toString());/*Crear en la Entidad un metodo TpString*/
+		  model.addAttribute("title", "Actualizando el registro con ID " + deposito);/*Crear en la Entidad un metodo TpString*/
 		  return "deposito/form";
 	  }
 	  

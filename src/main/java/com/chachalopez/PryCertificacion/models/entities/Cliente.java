@@ -77,7 +77,7 @@ public class Cliente extends Persona implements Serializable{
 //------------------------------ METODOS ----------------------
 	@Override
 	public String toString() {
-		return this.getNombre();
+		return this.getNombre()+" "+this.getApellido();
 	}
 	
 	//este metodo ayuda a que se retorne un la fecha con un formato y no toda la fecha que retorna con un monton de letras....

@@ -22,16 +22,26 @@
 					<table class="table table-hover">
 						<thead>
 							<tr>
+								<th>Cliente</th>
 								<th>N&uacute;mero de Cuenta</th>
+								<th>Tipo de Cuenta</th>
 								<th>Fecha de Apertura</th>
+								<th>Transacciones</th>
 								<th><a class="btn btn-sm btn-success"
 									th:href="@{/cuenta/create}">&nbsp;Nuevo</a></th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr th:each="c : ${cuentas}">
+								<td th:text="${c.cliente.toString()}"></td>
 								<td th:text="${c.numCuenta}"></td>
+								<td th:text="${c.tipocuenta.toString()}"></td>
 								<td th:text="${c.fechaAper()}"></td>
+								<td><a class="btn btn-sm btn-warning"
+									th:href="@{/deposito/list}">&nbsp;Deposito&nbsp;</a>
+									<a class="btn btn-sm btn-info"
+									th:href="@{/retiro/list}">&nbsp;Retiro&nbsp;</a>
+								</td>
 								<td><a class="btn btn-sm btn-warning"
 									th:href="@{/cuenta/update/} + ${c.idcuenta}">&nbsp;Actualizar</a>
 									<a class="btn btn-sm btn-info"

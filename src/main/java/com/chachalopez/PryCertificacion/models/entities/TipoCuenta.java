@@ -1,15 +1,16 @@
 package com.chachalopez.PryCertificacion.models.entities;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -26,16 +27,18 @@ public class TipoCuenta implements Serializable {
 	@Column(name="nombre")
 	private String  nombre;
 	
-	@Column(name="descripción")
+	@Column(name="descripcion")
 	private String descripcion;
 
 	
 	/*=====RELACION  UNO A MUCHOS CEUNTA-TIPOCUENTA======*/
-	@JoinColumn(name= "fk_cuenta", referencedColumnName = "pk_cuenta")
-	@ManyToOne
-	private Cuenta cuenta;
+	@OneToMany(mappedBy = "tipocuenta", fetch = FetchType.LAZY)
+	private List<Cuenta> cuentas;
 	
-	/*=====RELACION  UNO A MUCHOS CEUNTA-TIPOCUENTA======*/
+	/*=====RELACION  UNO A MUCHOS CEUNTA-TIPOCUENTA======
+	 * 
+	 * 
+	 * */
 	
 	
 	
@@ -44,13 +47,23 @@ public class TipoCuenta implements Serializable {
 		super();
 	}
 	
-	public Cuenta getCuenta() {
-		return cuenta;
+	/**
+	 * @return the cuentas
+	 */
+	public List<Cuenta> getCuentas() {
+		return cuentas;
 	}
 
-	public void setCuenta(Cuenta cuenta) {
-		this.cuenta = cuenta;
+
+
+	/**
+	 * @param cuentas the cuentas to set
+	 */
+	public void setCuentas(List<Cuenta> cuentas) {
+		this.cuentas = cuentas;
 	}
+
+
 
 	public TipoCuenta(Integer id) {
 		super();

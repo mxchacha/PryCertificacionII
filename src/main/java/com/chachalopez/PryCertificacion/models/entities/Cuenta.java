@@ -56,13 +56,12 @@ public class Cuenta implements Serializable {
 	 * */
 	
 	/*=====RELACION  UNO A MUCHOS CEUNTA-TIPOCUENTA======*/
-	@OneToMany(mappedBy = "cuenta", fetch = FetchType.LAZY)
-	private List<TipoCuenta> tipocuentas;
+	@JoinColumn(name= "fk_tipocuenta", referencedColumnName = "pk_tipocuenta")
+	@ManyToOne
+	private TipoCuenta tipocuenta;
 	
-	/*=====RELACION  UNO A MUCHOS CEUNTA-TIPOCUENTA======
-	 * 
-	 * 
-	 * */
+	/*=====RELACION  UNO A MUCHOS CEUNTA-TIPOCUENTA======*/
+
 	
 	/*=====RELACION  UNO A MUCHOS CUENTA-PRESTAMO======*/
 	@OneToMany(mappedBy = "cuenta", fetch = FetchType.LAZY)
@@ -101,12 +100,18 @@ public class Cuenta implements Serializable {
 		this.cliente = cliente;
 	}
 
-	public List<TipoCuenta> getTipocuentas() {
-		return tipocuentas;
+	/**
+	 * @return the tipocuenta
+	 */
+	public TipoCuenta getTipocuenta() {
+		return tipocuenta;
 	}
 
-	public void setTipocuentas(List<TipoCuenta> tipocuentas) {
-		this.tipocuentas = tipocuentas;
+	/**
+	 * @param tipocuenta the tipocuenta to set
+	 */
+	public void setTipocuenta(TipoCuenta tipocuenta) {
+		this.tipocuenta = tipocuenta;
 	}
 
 	public List<Prestamo> getPrestamos() {

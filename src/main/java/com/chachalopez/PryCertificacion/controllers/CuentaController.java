@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.chachalopez.PryCertificacion.models.entities.Cuenta;
+import com.chachalopez.PryCertificacion.models.entities.Cliente;
+import com.chachalopez.PryCertificacion.models.entities.TipoCuenta;
+import com.chachalopez.PryCertificacion.services.ITipoCuentaService;
+import com.chachalopez.PryCertificacion.services.IClienteService;
 import com.chachalopez.PryCertificacion.services.ICuentaService;
 
 @Controller
@@ -22,7 +26,13 @@ public class CuentaController {
 	  @Autowired
 	  private ICuentaService srvCuenta;
 	  
+	  //refecencia a un servicio de accionista
+	  @Autowired
+	  private IClienteService srvCliente;
 	  
+	//refecencia a un servicio de tipo de cuenta
+	  @Autowired
+	  private ITipoCuentaService srvTipoCuenta;
 	
 	  
 	  @GetMapping(value="/create")
@@ -30,6 +40,12 @@ public class CuentaController {
 		  Cuenta cuenta=new Cuenta();
 		  model.addAttribute("title", "Registro de nueva cuenta");
 		  model.addAttribute("cuenta", cuenta);/*Similar al ViewBag*/
+		  //se va enviar una lista de clientes
+		  List<Cliente> clientes = srvCliente.findAll();
+		  model.addAttribute("clientes", clientes);
+		  //se va enviar una lista de los tipos de cuentas
+		  List<TipoCuenta> tipocuentas = srvTipoCuenta.findAll();
+		  model.addAttribute("tipocuentas", tipocuentas);
 		  return "cuenta/form";/*Ubicación de la vista*/
 	  }
 	  
@@ -47,6 +63,12 @@ public class CuentaController {
 		  Cuenta cuenta = srvCuenta.findById(id);
 		  model.addAttribute("cuenta", cuenta);
 		  model.addAttribute("title", "Actualizando el registro " + cuenta);/*Crear en la Entidad un metodo TpString*/
+		  //se va enviar una lista de clientes
+		  List<Cliente> clientes = srvCliente.findAll();
+		  model.addAttribute("clientes", clientes);
+		  //se va enviar una lista de los tipos de cuentas
+		  List<TipoCuenta> tipocuentas = srvTipoCuenta.findAll();
+		  model.addAttribute("tipocuentas", tipocuentas);
 		  return "cuenta/form";
 	  }
 	  

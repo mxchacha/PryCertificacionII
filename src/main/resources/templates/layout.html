@@ -22,13 +22,13 @@
     <!-- Bootstrap CSS -->
     <link  th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
     <!-- Pogo Slider CSS -->
-    <link  href="@{/css/pogo-slider.min.css}" rel="stylesheet" />
+    <link  th:href="@{/css/pogo-slider.min.css}" rel="stylesheet" />
     <!-- Site CSS -->
-    <link  href="@{/css/style.css}" rel="stylesheet" />
+    <link  th:href="@{/css/style.css}" rel="stylesheet" />
     <!-- Responsive CSS -->
-    <link  href="@{/css/responsive.css}"rel="stylesheet" />
+    <link  th:href="@{/css/responsive.css}"rel="stylesheet" />
     <!-- Custom CSS -->
-    <link  href="@{/css/custom.css}" rel="stylesheet"/>
+    <link  th:href="@{/css/custom.css}" rel="stylesheet"/>
 
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -55,7 +55,7 @@
             <div class="container">
                 <div class="row">
                     <div class="logo_section">
-                        <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="image"></a>
+                        <a class="navbar-brand" href="index.html"><img src="/logo.png" alt="image"></a>
                     </div>
                     <div class="site_information">
                         <ul>
@@ -82,11 +82,11 @@
                 <div class="collapse navbar-collapse justify-content-end" id="navbar-wd">
                     <ul class="navbar-nav">
                         <li><a class="nav-link" href="index.html">Home</a></li>
-                        <li><a class="nav-link" href="about.html">About</a></li>
-                        <li><a class="nav-link" href="exchange.html">Exchange</a></li>
-                        <li><a class="nav-link" href="services.html">Services</a></li>
-                        <li><a class="nav-link" href="new.html">News</a></li>
-                        <li><a class="nav-link" href="contact.html">Contact</a></li>
+                        <li><a class="nav-link" th:href="@{/accionista/list}">Accionista</a></li>
+                        <li><a class="nav-link" th:href="@{/cliente/list}">Cliente</a></li>
+                        <li><a class="nav-link" th:href="@{/cuenta/list}">Cuenta</a></li>
+                        <li><a class="nav-link" th:href="@{/prestamo/list}">Prestamo</a></li>
+                        <li><a class="nav-link" th:href="@{/capital/list}">Capital</a></li>
                     </ul>
                 </div>
                      </div>

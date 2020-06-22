@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.chachalopez.PryCertificacion.models.entities.Cuenta;
 import com.chachalopez.PryCertificacion.models.entities.Deposito;
+import com.chachalopez.PryCertificacion.services.ICuentaService;
 import com.chachalopez.PryCertificacion.services.IDepositoService;
 
 @Controller
@@ -22,7 +24,9 @@ public class DepositoController {
 	  @Autowired
 	  private IDepositoService srvDeposito;
 	  
-	  
+	//refecencia a un servicio de accionista
+	  @Autowired
+	  private ICuentaService srvCuenta;
 	
 	  
 	  @GetMapping(value="/create")
@@ -30,6 +34,9 @@ public class DepositoController {
 		  Deposito deposito=new Deposito();
 		  model.addAttribute("title", "Registro de nuevo deposito");
 		  model.addAttribute("deposito", deposito);/*Similar al ViewBag*/
+		  //se va enviar una lista de accionistas
+		  List<Cuenta> cuentas = srvCuenta.findAll();
+		  model.addAttribute("cuentas", cuentas);
 		  return "deposito/form";/*Ubicación de la vista*/
 	  }
 	  
@@ -47,6 +54,9 @@ public class DepositoController {
 		  Deposito deposito = srvDeposito.findById(id);
 		  model.addAttribute("deposito", deposito);
 		  model.addAttribute("title", "Actualizando el registro con ID " + deposito);/*Crear en la Entidad un metodo TpString*/
+		  //se va enviar una lista de accionistas
+		  List<Cuenta> cuentas = srvCuenta.findAll();
+		  model.addAttribute("cuentas", cuentas);
 		  return "deposito/form";
 	  }
 	  

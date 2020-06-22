@@ -13,6 +13,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.chachalopez.PryCertificacion.models.entities.Capital;
 import com.chachalopez.PryCertificacion.services.ICapitalService;
+import com.chachalopez.PryCertificacion.models.entities.Accionista;
+import com.chachalopez.PryCertificacion.services.IAccionistaService;
 
 @Controller
 @RequestMapping(value="/capital")
@@ -21,7 +23,9 @@ public class CapitalController {
 	  @Autowired
 	  private ICapitalService srvCapital;
 	  
-	  
+	  //refecencia a un servicio de accionista
+	  @Autowired
+	  private IAccionistaService srvAccionista;
 	
 	  
 	  @GetMapping(value="/create")
@@ -29,6 +33,9 @@ public class CapitalController {
 		  Capital capital=new Capital();
 		  model.addAttribute("title", "Registro de nuevo capital");
 		  model.addAttribute("capital", capital);/*Similar al ViewBag*/
+		  //se va enviar una lista de accionistas
+		  List<Accionista> accionistas = srvAccionista.findAll();
+		  model.addAttribute("accionistas", accionistas);
 		  return "capital/form";/*Ubicación de la vista*/
 	  }
 	  
@@ -46,6 +53,9 @@ public class CapitalController {
 		  Capital capital = srvCapital.findById(id);
 		  model.addAttribute("capital", capital);
 		  model.addAttribute("title", "Actualizando el registro con ID " + capital);/*Crear en la Entidad un metodo TpString*/
+		//se va enviar una lista de accionistas
+		  List<Accionista> accionistas = srvAccionista.findAll();
+		  model.addAttribute("accionistas", accionistas);
 		  return "capital/form";
 	  }
 	  

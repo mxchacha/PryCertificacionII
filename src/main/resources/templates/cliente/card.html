@@ -28,56 +28,105 @@
 												<h1 th:text="${cliente}" class="h4 text-gray-900 mb-4"></h1>
 											</div>
 											<hr>
-											<div class="form-group row">
-								
-												<div class="col-sm-6 mb-3 mb-sm-0">
-													<label class="form-control form-control-user"
-														th:text="${cliente.nombre}"></label>
-												</div>
-												<div class="col-sm-6 mb-3 mb-sm-0">
-													<label class="form-control form-control-user"
-														th:text="${cliente.apellido}"></label>
-												</div>
+											<hr>
+							              	<div class="row">
+							              		<div class="col-sm-6 mb-3 mb-sm-0">
+							                    	<h6 class="label">Nombres:</h6>
+							                 	</div>
+							                	<div class="col-sm-6 mb-3 mb-sm-0">
+							                    	<label class="form-control form-control-user" th:text="${cliente.nombre}"></label>
+							                 	</div>
+							                 	 
+								            </div>
+								            <hr>
+							              	<div class="row">
+							              		<div class="col-sm-6 mb-3 mb-sm-0">
+							                    	<h6 class="label">Apellidos:</h6>
+							                 	</div>
+							                	<div class="col-sm-6 mb-3 mb-sm-0">
+							                    	<label class="form-control form-control-user" th:text="${cliente.apellido}"></label>
+							                 	</div>
+							                 	 
+								            </div>
+											<hr>
+							              	<div class="row">
+							              		<div class="col-sm-6 mb-3 mb-sm-0">
+							                    	<h6 class="label">C&eacute;dula:</h6>
+							                 	</div>
+							                	<div class="col-sm-6 mb-3 mb-sm-0">
+							                    	<label class="form-control form-control-user" th:text="${cliente.cedula}"></label>
+							                 	</div>
+							                 	 
+								            </div>
+								            <hr>
+							              	<div class="row">
+							              		<div class="col-sm-6 mb-3 mb-sm-0">
+							                    	<h6 class="label">Fecha de nacimiento:</h6>
+							                 	</div>
+							                	<div class="col-sm-6 mb-3 mb-sm-0">
+							                    	<label class="form-control form-control-user" th:text="${cliente.fechaNac()}"></label>
+							                 	</div>
+							                 	 
+								            </div>
+											<hr>
+							              	<div class="row">
+							              		<div class="col-sm-6 mb-3 mb-sm-0">
+							                    	<h6 class="label">Usuario:</h6>
+							                 	</div>
+							                	<div class="col-sm-6 mb-3 mb-sm-0">
+							                    	<label class="form-control form-control-user" th:text="${cliente.usuario}"></label>
+							                 	</div>
+							                 	 
+								            </div>
+								            <hr>
+							              	<div class="row">
+							              		<div class="col-sm-6 mb-3 mb-sm-0">
+							                    	<h6 class="label">Contrase&ntilde;a:</h6>
+							                 	</div>
+							                	<div class="col-sm-6 mb-3 mb-sm-0">
+							                    	<label class="form-control form-control-user" th:text="${cliente.contrasenia}"></label>
+							                 	</div>
+							                 	 
+								            </div>
+											<hr>
+							              	<div class="row">
+							              		<div class="col-sm-6 mb-3 mb-sm-0">
+							                    	<h6 class="label">Sexo:</h6>
+							                 	</div>
+							                	<div class="col-sm-6 mb-3 mb-sm-0">
+							                    	<label class="form-control form-control-user" th:text="${cliente.sexo}"></label>
+							                 	</div>
+							                 	 
+								            </div>
+								            <hr>
+							              	<div class="row">
+							              		<div class="col-sm-6 mb-3 mb-sm-0">
+							                    	<h6 class="label">Telefono:</h6>
+							                 	</div>
+							                	<div class="col-sm-6 mb-3 mb-sm-0">
+							                    	<label class="form-control form-control-user" th:text="${cliente.telefono}"></label>
+							                 	</div>
+							                 	 
+								            </div>
+											<hr>
+							              	<div class="row">
+							              		<div class="col-sm-6 mb-3 mb-sm-0">
+							                    	<h6 class="label">Fecha de ingreso:</h6>
+							                 	</div>
+							                	<div class="col-sm-6 mb-3 mb-sm-0">
+							                    	<label class="form-control form-control-user" th:text="${cliente.fechaIngr()}"></label>
+							                 	</div>
+							                 	 
+								            </div>
+								            <hr>
+							              	<div class="row">
+							              		<div class="col-sm-6 mb-3 mb-sm-0">
+							                    	<h6 class="label">Monto:</h6>
+							                 	</div>
+							                	<div class="col-sm-6 mb-3 mb-sm-0">
+							                    	<label class="form-control form-control-user" th:text="${cliente.montoIngreso}"></label>
+							                 	</div>
 											</div>
-											<div class="form-group row">
-												<div class="col-sm-6 mb-3 mb-sm-0">
-													<label class="form-control form-control-user"
-														th:text="${cliente.cedula}"></label>
-												</div>
-												<div class="form-group col-sm-6">
-													<label class="form-control form-control-user"
-														th:text="${cliente.fechaNac()}"></label>
-												</div>
-											</div>
-											<div class="form-group row">
-												<div class="col-sm-6 mb-3 mb-sm-0">
-													<label class="form-control form-control-user"
-														th:text="${cliente.sexo}"></label>
-												</div>
-												<div class="col-sm-6 mb-3 mb-sm-0">
-													<label class="form-control form-control-user"
-														th:text="${cliente.telefono}"></label>
-												</div>
-											</div>
-											<h6>Sexo:</h6>
-											<div class="form-group">
-												<div class="col-sm-6 mb-3 mb-sm-0">
-													<label class="form-control form-control-user"
-														th:text="${cliente.sexo}"></label>
-												</div>
-											</div>
-											
-											<div class="form-group row">
-												<div class="col-sm-6 mb-3 mb-sm-0">
-													<label class="form-control form-control-user"
-														th:text="${cliente.fechaIngr()}"></label>
-												</div>
-												<div class="col-sm-6 mb-3 mb-sm-0">
-													<label class="form-control form-control-user"
-														th:text="${cliente.montoIngreso}"></label>
-												</div>
-											</div>
-
 											<hr>											
 											<h5 class="modal-title">Desea eliminar el registro?</h5>
 											<div class="form-group row">

@@ -1,15 +1,16 @@
 package com.chachalopez.PryCertificacion.models.entities;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -31,12 +32,10 @@ public class TipoPrestamo implements Serializable{
 	
 	@Column(name="plazo")
 	private String plazo;
-
 	
 	/*=====RELACION  UNO A MUCHOS PRESTAMO-TIPOPRESTAMO======*/
-	@JoinColumn(name= "fk_prestamo", referencedColumnName = "pk_prestamo")
-	@ManyToOne
-	private Prestamo prestamo;
+	@OneToMany(mappedBy = "tipoprestamo", fetch = FetchType.LAZY)
+	private List<Prestamo> prestamos;
 	/*=====RELACION  UNO A MUCHOS PRESTAMO-TIPOPRESTAMO======*/
 	
 	
@@ -45,13 +44,6 @@ public class TipoPrestamo implements Serializable{
 		super();
 	}
 	
-	public Prestamo getPrestamo() {
-		return prestamo;
-	}
-
-	public void setPrestamo(Prestamo prestamo) {
-		this.prestamo = prestamo;
-	}
 
 	public TipoPrestamo(Integer id) {
 		super();
@@ -90,6 +82,22 @@ public class TipoPrestamo implements Serializable{
 		this.plazo = plazo;
 	}
 	
+	/**
+	 * @return the prestamos
+	 */
+	public List<Prestamo> getPrestamos() {
+		return prestamos;
+	}
+
+
+	/**
+	 * @param prestamos the prestamos to set
+	 */
+	public void setPrestamos(List<Prestamo> prestamos) {
+		this.prestamos = prestamos;
+	}
+
+
 	@Override
 	public String toString() {
 		return this.getNombre();

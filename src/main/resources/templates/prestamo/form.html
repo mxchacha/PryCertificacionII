@@ -37,6 +37,28 @@
 													</div>
 													
 												</div>
+												<hr>
+												<h6>N&uacute;mero de cuenta</h6>
+									            <div class="form.group row clo-sm-6">
+								                	<select class="form-control" th:field="*{cuenta.idcuenta}" >
+								                		<option value=0>-- Seleccione --</option>
+								                		<option th:each="c : ${cuentas}" th:value="${c.idcuenta}" th:text="${c.toString()}">
+								                			
+								                		</option>
+								                	</select>
+									            </div>
+												<hr>
+												<hr>
+												<h6>Tipo de prestamo</h6>
+									            <div class="form.group row clo-sm-6">
+								                	<select class="form-control" th:field="*{tipoprestamo.idtipoprestamo}" >
+								                		<option value=0>-- Seleccione --</option>
+								                		<option th:each="tp : ${tipoprestamos}" th:value="${tp.idtipoprestamo}" th:text="${tp.toString()}">
+								                			
+								                		</option>
+								                	</select>
+									            </div>
+												<hr>
 												<div class="form-group row">
 													<div class="col-sm-6 mb-3 mb-sm-0">
 														<input type="text" class="form-control form-control-user"

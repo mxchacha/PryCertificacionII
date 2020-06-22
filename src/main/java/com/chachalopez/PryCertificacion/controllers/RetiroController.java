@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.chachalopez.PryCertificacion.models.entities.Cuenta;
 import com.chachalopez.PryCertificacion.models.entities.Retiro;
+import com.chachalopez.PryCertificacion.services.ICuentaService;
 import com.chachalopez.PryCertificacion.services.IRetiroService;
 
 @Controller
@@ -22,7 +24,9 @@ public class RetiroController {
 	  @Autowired
 	  private IRetiroService srvRetiro;
 	  
-	  
+	//refecencia a un servicio de accionista
+	  @Autowired
+	  private ICuentaService srvCuenta;
 	
 	  
 	  @GetMapping(value="/create")
@@ -30,6 +34,9 @@ public class RetiroController {
 		  Retiro retiro=new Retiro();
 		  model.addAttribute("title", "Registro de nuevo retiro");
 		  model.addAttribute("retiro", retiro);/*Similar al ViewBag*/
+		//se va enviar una lista de accionistas
+		  List<Cuenta> cuentas = srvCuenta.findAll();
+		  model.addAttribute("cuentas", cuentas);
 		  return "retiro/form";/*Ubicación de la vista*/
 	  }
 	  
@@ -47,6 +54,9 @@ public class RetiroController {
 		  Retiro retiro = srvRetiro.findById(id);
 		  model.addAttribute("retiro", retiro);
 		  model.addAttribute("title", "Actualizando el registro con ID" + retiro);/*Crear en la Entidad un metodo TpString*/
+		//se va enviar una lista de accionistas
+		  List<Cuenta> cuentas = srvCuenta.findAll();
+		  model.addAttribute("cuentas", cuentas);
 		  return "retiro/form";
 	  }
 	  

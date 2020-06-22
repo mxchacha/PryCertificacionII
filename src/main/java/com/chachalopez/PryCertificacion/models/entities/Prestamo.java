@@ -2,18 +2,15 @@ package com.chachalopez.PryCertificacion.models.entities;
 
 import java.io.Serializable;
 
-import java.util.List;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -48,9 +45,11 @@ public class Prestamo implements Serializable {
 	 * 
 	 * 
 	 */
+	
 	/*=====RELACION  UNO A MUCHOS PRESTAMO-TIPOPRESTAMO======*/
-	@OneToMany(mappedBy = "prestamo", fetch = FetchType.LAZY)
-	private List<TipoPrestamo> tipoprestamos;
+	@JoinColumn(name= "fk_tipoprestamo", referencedColumnName = "pk_tipoprestamo")
+	@ManyToOne
+	private TipoPrestamo tipoprestamo;
 	/*=====RELACION  UNO A MUCHOS PRESTAMO-TIPOPRESTAMO======
 	 * 
 	 * 
@@ -75,13 +74,20 @@ public class Prestamo implements Serializable {
 	public void setCuenta(Cuenta cuenta) {
 		this.cuenta = cuenta;
 	}
+    
 
-	public List<TipoPrestamo> getTipoprestamos() {
-		return tipoprestamos;
+	/**
+	 * @return the tipoprestamo
+	 */
+	public TipoPrestamo getTipoprestamo() {
+		return tipoprestamo;
 	}
 
-	public void setTipoprestamos(List<TipoPrestamo> tipoprestamos) {
-		this.tipoprestamos = tipoprestamos;
+	/**
+	 * @param tipoprestamo the tipoprestamo to set
+	 */
+	public void setTipoprestamo(TipoPrestamo tipoprestamo) {
+		this.tipoprestamo = tipoprestamo;
 	}
 
 	public Capital getCapital() {

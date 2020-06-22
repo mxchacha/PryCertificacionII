@@ -29,6 +29,12 @@ public abstract class Persona {
 	@Column(name="apellido")
 	private String apellido;
 	
+	@Column(name="usuario")
+	private String usuario;
+	
+	@Column(name="contrasenia")
+	private String contrasenia;
+	
 	@Column(name="cedula")
 	private String cedula;
 	
@@ -88,6 +94,34 @@ public abstract class Persona {
 	}
 
 	
+
+	/**
+	 * @return the usuario
+	 */
+	public String getUsuario() {
+		return usuario;
+	}
+
+	/**
+	 * @param usuario the usuario to set
+	 */
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
+
+	/**
+	 * @return the contrasenia
+	 */
+	public String getContrasenia() {
+		return contrasenia;
+	}
+
+	/**
+	 * @param contrasenia the contrasenia to set
+	 */
+	public void setContrasenia(String contrasenia) {
+		this.contrasenia = contrasenia;
+	}
 
 	public Calendar getFechaNacimiento() {
 		return fechaNacimiento;

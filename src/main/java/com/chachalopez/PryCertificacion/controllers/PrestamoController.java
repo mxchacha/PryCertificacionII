@@ -11,8 +11,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.chachalopez.PryCertificacion.models.entities.Cuenta;
+import com.chachalopez.PryCertificacion.models.entities.TipoPrestamo;
 import com.chachalopez.PryCertificacion.models.entities.Prestamo;
+import com.chachalopez.PryCertificacion.services.ICuentaService;
 import com.chachalopez.PryCertificacion.services.IPrestamoService;
+import com.chachalopez.PryCertificacion.services.ITipoPrestamoService;
 
 @Controller
 @RequestMapping(value="/prestamo")
@@ -22,14 +26,26 @@ public class PrestamoController {
 	  @Autowired
 	  private IPrestamoService srvPrestamo;
 	  
+	  //refecencia a un servicio de cuenta
+	  @Autowired
+	  private ICuentaService srvCuenta;
 	  
-	
-	  
+	  //refecencia a un servicio de tipo de cuenta
+	  @Autowired
+	  private ITipoPrestamoService srvTipoPrestamo;
+
 	  @GetMapping(value="/create")
 	  public String create(Model model) {
 		  Prestamo prestamo=new Prestamo();
 		  model.addAttribute("title", "Registro de nuevo prestamo");
 		  model.addAttribute("prestamo", prestamo);/*Similar al ViewBag*/
+		  //se va enviar una lista de cuentas
+		  List<Cuenta> cuentas = srvCuenta.findAll();
+		  model.addAttribute("cuentas", cuentas);
+		  //se va enviar una lista de los tipos de cuentas
+		  List<TipoPrestamo> tipoprestamos = srvTipoPrestamo.findAll();
+		  model.addAttribute("tipoprestamos", tipoprestamos);
+
 		  return "prestamo/form";/*Ubicación de la vista*/
 	  }
 	  
@@ -47,6 +63,12 @@ public class PrestamoController {
 		  Prestamo prestamo = srvPrestamo.findById(id);
 		  model.addAttribute("prestamo", prestamo);
 		  model.addAttribute("title", "Actualizando el registro de " + prestamo.getNumPrestamo());/*Crear en la Entidad un metodo TpString*/
+		//se va enviar una lista de cuentas
+		  List<Cuenta> cuentas = srvCuenta.findAll();
+		  model.addAttribute("cuentas", cuentas);
+		  //se va enviar una lista de los tipos de cuentas
+		  List<TipoPrestamo> tipoprestamos = srvTipoPrestamo.findAll();
+		  model.addAttribute("tipoprestamos", tipoprestamos);
 		  return "prestamo/form";
 	  }
 	  

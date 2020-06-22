@@ -22,6 +22,7 @@
 					<table class="table table-hover">
 						<thead>
 							<tr>
+								<th>Accionista</th>
 								<th>Fondo</th>
 								<th><a class="btn btn-sm btn-success"
 									th:href="@{/capital/create}">&nbsp;Nuevo</a></th>
@@ -29,6 +30,7 @@
 						</thead>
 						<tbody>
 							<tr th:each="c : ${capitales}">
+								<td th:text="${c.accionista.toString()}"></td>
 								<td th:text="${c.fondo}"></td>
 								<td><a class="btn btn-sm btn-warning"
 									th:href="@{/capital/update/} + ${c.idcapital}">&nbsp;Actualizar</a>

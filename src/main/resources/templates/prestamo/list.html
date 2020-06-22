@@ -23,6 +23,8 @@
 						<thead>
 							<tr>
 								<th>Num. Pr&eacute;stamo</th>
+								<th>N&uacute;mero de cuenta</th>
+								<th>Tipo de prestamo</th>
 								<th>Monto</th>
 								<th>Tiempo</th>
 								<th><a class="btn btn-sm btn-success"
@@ -32,6 +34,8 @@
 						<tbody>
 							<tr th:each="p : ${prestamos}">
 								<td th:text="${p.numPrestamo}"></td>
+								<td th:text="${p.cuenta.toString()}"></td>
+								<td th:text="${p.tipoprestamo.toString()}"></td>
 								<td th:text="${p.monto}"></td>
 								<td th:text="${p.tiempo}"></td>
 								

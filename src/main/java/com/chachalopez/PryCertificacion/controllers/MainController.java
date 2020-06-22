@@ -25,5 +25,10 @@ public class MainController {
 	public String register(Model model) {						
 		return "register";
 	}
+	/*
+	@GetMapping(value="/home.html")
+	public String index(Model model) {						
+		return "home";
+	}*/
 
 }

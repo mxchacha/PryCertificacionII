@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" 
+		xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+		lang="en">
 <!-- Basic -->
 
 <head th:fragment="frgHead" >
@@ -29,6 +31,8 @@
     <link  th:href="@{/css/responsive.css}"rel="stylesheet" />
     <!-- Custom CSS -->
     <link  th:href="@{/css/custom.css}" rel="stylesheet"/>
+    
+    
 
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -55,13 +59,34 @@
             <div class="container">
                 <div class="row">
                     <div class="logo_section">
-                        <a class="navbar-brand" href="index.html"><img src="/logo.png" alt="image"></a>
+                        <a class="navbar-brand" href="index.html"><img th:src="@{/images/logo.png}" alt="image"></a>
                     </div>
                     <div class="site_information">
                         <ul>
-                            <li><a href="mailto:exchang@gmail.com"><img src="images/mail_icon.png" alt="#" />exchang@gmail.com</a></li>
-                            <li><a href="tel:exchang@gmail.com"><img src="images/phone_icon.png" alt="#" />+7123569847</a></li>
-                            <li><a class="join_bt" href="#">Join us</a></li>
+                
+                            <li><a class="join_bt" href="#">Registrarse</a></li>
+                            <li><a class="join_bt" href="#">Login</a></li>
+                            
+                            <li sec:authorize="!isAuthenticated()" class="nav-item dropdown no-arrow">
+                                 <a class="nav-link dropdown-toggle" th:href="@{/login}" id="userDropdown" role="button" >
+								 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Ingresar</span>
+								 </a>
+									              
+          				    </li>
+                            <li sec:authorize="isAuthenticated()" class="nav-item dropdown no-arrow">
+									              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" >
+									                <span sec:authentication="name" class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
+									                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+									              </a>
+									              <!-- Dropdown - User Information -->
+									              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+									                <div class="dropdown-divider"></div>
+									                <a class="dropdown-item" th:href="@{/logout}"  >
+									                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+									                  Salir
+									                </a>
+									              </div>
+          				  </li>
                         </ul>
                     </div>
                 </div>
@@ -81,7 +106,7 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-end" id="navbar-wd">
                     <ul class="navbar-nav">
-                        <li><a class="nav-link" href="index.html">Home</a></li>
+                        <li><a class="nav-link" th:href="@{/}">Inicio</a></li>
                         <li><a class="nav-link" th:href="@{/accionista/list}">Accionista</a></li>
                         <li><a class="nav-link" th:href="@{/cliente/list}">Cliente</a></li>
                         <li><a class="nav-link" th:href="@{/cuenta/list}">Cuenta</a></li>
@@ -94,7 +119,7 @@
                  <div class="search-box">
                     <input type="text" class="search-txt" placeholder="Search">
                     <a class="search-btn">
-                        <img src="images/search_icon.png" alt="#" />
+                        <img th:src="@{/images/search_icon.png}" alt="#" />
                     </a>
                 </div> 
                 </div>
@@ -138,7 +163,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="full text_align_right_img">
-                        <img src="images/img3.png" alt="#" />
+                        <img th:src="@{/images/img3.png}" alt="#" />
                     </div>
                 </div>
             </div>
@@ -155,7 +180,7 @@
                     <div class="row">
                         <div class="col-sm-6 col-md-6 col-lg-3">
                             <div class="full">
-                                <img class="img-responsive" src="images/footer_logo.png" alt="#" />
+                                <img class="img-responsive" th:src="@{/images/logo.png}" alt="#" />
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-6 col-lg-3">
@@ -164,7 +189,7 @@
                             </div>
                             <div class="full">
                                 <ul class="menu_footer">
-                                    <li><a href="home.html">> Home</a></li>
+                                    <li><a href="home.html">> Inicio</a></li>
                                     <li><a href="about.html">> About</a></li>
                                     <li><a href="exchange.html">> Exchange</a></li>
                                     <li><a href="services.html">> Services</a></li>
@@ -192,9 +217,9 @@
                                 <div class="footer_blog full white_fonts">
                              <h3>Contact us</h3>
                              <ul class="full">
-                               <li><img src="images/i5.png"><span>London 145<br>United Kingdom</span></li>
-                               <li><img src="images/i6.png"><span>demo@gmail.com</span></li>
-                               <li><img src="images/i7.png"><span>+12586954775</span></li>
+                               <li><img th:src="@{/images/i5.png}"><span>London 145<br>United Kingdom</span></li>
+                               <li><img  th:src="@{/images/i6.png}"><span>demo@gmail.com</span></li>
+                               <li><img  th:src="@{/images/i7.png}"><span>+12586954775</span></li>
                              </ul>
                          </div>
                             </div>

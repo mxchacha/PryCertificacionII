@@ -26,7 +26,9 @@
 								<th>N&uacute;mero de Cuenta</th>
 								<th>Tipo de Cuenta</th>
 								<th>Fecha de Apertura</th>
+								<th>Saldo</th>
 								<th>Transacciones</th>
+								
 								<th><a class="btn btn-sm btn-success"
 									th:href="@{/cuenta/create}">&nbsp;Nuevo</a></th>
 							</tr>
@@ -37,6 +39,7 @@
 								<td th:text="${c.numCuenta}"></td>
 								<td th:text="${c.tipocuenta.toString()}"></td>
 								<td th:text="${c.fechaAper()}"></td>
+								<td th:text="${c.saldo}"></td>
 								<td><a class="btn btn-sm btn-warning"
 									th:href="@{/deposito/list}">&nbsp;Deposito&nbsp;</a>
 									<a class="btn btn-sm btn-info"

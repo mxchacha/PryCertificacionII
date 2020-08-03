@@ -7,28 +7,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @Controller
-@RequestMapping(value= {"/","/index.html"})
+@RequestMapping(value= {"/"})
 public class MainController {
 	
-	@GetMapping(value="/")
-	  public String home(Model model) {
-		  
-		  return "index";/*Ubicación de la vista*/
-	  }
+	@GetMapping(value= {"/","/index.html"})
+	public String index(Model model) {
+		//El retorno indica la vista que se va a desplegar
+		//se coloca únicamente el nombre sin la extension
+		return "index";
+	}
+		
 	
 	@GetMapping(value="/tables.html")
 	public String tables(Model model) {						
 		return "tables";
 	}
-	
+
 	@GetMapping(value="/register.html")
 	public String register(Model model) {						
 		return "register";
 	}
-	/*
-	@GetMapping(value="/home.html")
-	public String index(Model model) {						
-		return "home";
-	}*/
+	
+	
 
 }

@@ -32,8 +32,8 @@ public abstract class Persona {
 	@Column(name="usuario")
 	private String usuario;
 	
-	@Column(name="contrasenia")
-	private String contrasenia;
+	@Column(name="password")
+	private String password;
 	
 	@Column(name="cedula")
 	private String cedula;
@@ -109,18 +109,14 @@ public abstract class Persona {
 		this.usuario = usuario;
 	}
 
-	/**
-	 * @return the contrasenia
-	 */
-	public String getContrasenia() {
-		return contrasenia;
+	
+
+	public String getPassword() {
+		return password;
 	}
 
-	/**
-	 * @param contrasenia the contrasenia to set
-	 */
-	public void setContrasenia(String contrasenia) {
-		this.contrasenia = contrasenia;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public Calendar getFechaNacimiento() {
@@ -154,6 +150,8 @@ public abstract class Persona {
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
+	
+	
 //------------------------------ METODOS ----------------------
 	@Override
 	public String toString() {

@@ -48,6 +48,7 @@ public class PrestamoController {
 
 		  return "prestamo/form";/*Ubicación de la vista*/
 	  }
+
 	  
 	  
 	  @GetMapping(value="/retrieve/{id}")
@@ -101,4 +102,5 @@ public class PrestamoController {
 
 	  
 }
+
 

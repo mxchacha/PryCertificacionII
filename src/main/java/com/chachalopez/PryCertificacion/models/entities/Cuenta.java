@@ -43,6 +43,11 @@ public class Cuenta implements Serializable {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")	
 	private Calendar fechaApertura;
 	
+	@Column(name="saldo")
+	private float saldo;
+	
+	
+	
 	
 	/*=====RELACION  UNO A MUCHOS CLIENTE-CUENTA======*/
 	
@@ -73,7 +78,7 @@ public class Cuenta implements Serializable {
 	 */
 	/*=====RELACION  UNO A MUCHOS CUENTA-DEPOSITO======*/
 	@OneToMany(mappedBy = "cuenta", fetch = FetchType.LAZY)
-	private List<Deposito> depositos;
+	private List<Deposito> deposito;
 	
 	/*=====RELACION  UNO A MUCHOS CUENTA-DEPOSITO======*
 	 * 
@@ -110,6 +115,8 @@ public class Cuenta implements Serializable {
 	/**
 	 * @param tipocuenta the tipocuenta to set
 	 */
+	
+	
 	public void setTipocuenta(TipoCuenta tipocuenta) {
 		this.tipocuenta = tipocuenta;
 	}
@@ -122,12 +129,12 @@ public class Cuenta implements Serializable {
 		this.prestamos = prestamos;
 	}
 
-	public List<Deposito> getDepositos() {
-		return depositos;
+	public List<Deposito> getDeposito() {
+		return deposito;
 	}
 
-	public void setDepositos(List<Deposito> depositos) {
-		this.depositos = depositos;
+	public void setDeposito(List<Deposito> deposito) {
+		this.deposito = deposito;
 	}
 
 	public List<Retiro> getRetiro() {
@@ -167,7 +174,23 @@ public class Cuenta implements Serializable {
 		this.fechaApertura = fechaApertura;
 	}
 	
-//------------------------------ METODOS ----------------------
+	
+	public float getSaldo() {
+		
+		
+		return saldo;
+	}
+
+	/*Deposito dep;
+	Retiro ret;*/
+	public void setSaldo(float saldo) {
+		
+		this.saldo = saldo;
+		
+	
+	}
+
+	//------------------------------ METODOS ----------------------
 	@Override
 	public String toString() {
 		return this.getNumCuenta();
@@ -178,8 +201,32 @@ public class Cuenta implements Serializable {
 		return sdf.format(fechaApertura.getTime());
 	}
 	
+	/*ACTUALIZAR SALDO
+	
+	public float depositoDin() {
+		return saldo=saldo + dep.getMonto();
+	}
 	
 	
+	public float retiroDin() {
+		return saldo=saldo - ret.getMonto();
+	}
+	
+	public float saldoTotal() {
+			if(dep.getMonto()>0) {
+				return saldo+dep.getMonto();
+			}
+			if(ret.getMonto()>0) {
+				return saldo-ret.getMonto();
+			}
+			else {
+				return saldo;
+			}
+			
+			
+		}
+	
+	*/
 	
 	
 	

@@ -3,6 +3,8 @@
 <head th:replace="layout :: frgHead"></head>
 <body id="page-top">
 
+<header th:replace="layout :: frgHeader"></header>
+
 	<div id="wrapper">
 		
 
@@ -11,6 +13,8 @@
 			<div id="content">
 
 				<nav th:replace="layout :: frgSideBar"></nav>
+				<br>
+				<br>
 
 				<!-- Begin Page Content -->
 				<div class="container-fluid">
@@ -93,7 +97,7 @@
 												<div class="form-group row">
 													<div class="col-sm-6 mb-3 mb-sm-0">
 														<input type="date" class="form-control form-control-user"
-															th:field="*{fechaIngreo}">
+															th:field="*{fechaIngreso}">
 													</div>
 													<div class="col-sm-6 mb-3 mb-sm-0">
 														<input type="text" class="form-control form-control-user"

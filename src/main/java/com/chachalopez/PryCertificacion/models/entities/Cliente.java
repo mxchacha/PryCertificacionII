@@ -27,7 +27,7 @@ public class Cliente extends Persona implements Serializable{
 	@Column(name="fecha_ingreso")
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")	
-	private Calendar fechaIngreo;
+	private Calendar fechaIngreso;
 	
 	@Column(name="monto_ingreso")
 	private Float montoIngreso;
@@ -58,12 +58,12 @@ public class Cliente extends Persona implements Serializable{
 		this.setIdpersona(id);
 	}
 
-	public Calendar getFechaIngreo() {
-		return fechaIngreo;
+	public Calendar getFechaIngreso() {
+		return fechaIngreso;
 	}
 
-	public void setFechaIngreo(Calendar fechaIngreo) {
-		this.fechaIngreo = fechaIngreo;
+	public void setFechaIngreso(Calendar fechaIngreso) {
+		this.fechaIngreso = fechaIngreso;
 	}
 
 	public Float getMontoIngreso() {
@@ -83,7 +83,7 @@ public class Cliente extends Persona implements Serializable{
 	//este metodo ayuda a que se retorne un la fecha con un formato y no toda la fecha que retorna con un monton de letras....
 	public String fechaIngr() {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MMM/yyyy");
-		return sdf.format(fechaIngreo.getTime());
+		return sdf.format(fechaIngreso.getTime());
 	}
 
 	

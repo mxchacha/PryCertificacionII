@@ -1,112 +1,135 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="layout :: frgHead"></head>
+
 <body id="page-top">
 
-<header th:replace="layout :: frgHeader"></header>
+<header th:replace="layout :: frgHead"></header>
+<nav th:replace="layout :: frgSideBar"></nav>
+<br>
+<br>
+<div class="container shadow-lg my-5" >
+	<div class="col-12">
+		<span>Formulario</span>
+				<h4 th:text="${title}"></h4>
+	<div class="contact-form-area wow fadeInUp"data-wow-delay="500ms">
+	</div>
+	</div>
 
-	<div id="wrapper">
-		
 
-		<div id="content-wrapper" class="d-flex flex-column">
-
-			<div id="content">
-
-				<nav th:replace="layout :: frgSideBar"></nav>
-				<br>
-				<br>
-
-				<!-- Begin Page Content -->
-				<div class="container-fluid">
-
-					<!-- Page Heading -->
-					<div class="container">
-
-						<div class="card o-hidden border-0 shadow-lg my-5">
-							<div class="card-body p-0">
-								<!-- Nested Row within Card Body -->
-								<div class="row">
-									<div class="col-lg-7">
-										<div class="p-5">
-											<div class="text-center">
-												<h1 th:text="${title}" class="h4 text-gray-900 mb-4"></h1>
-											</div>
-											<form class="user" th:action="@{/cliente/save}"
-												th:object="${cliente}" method="post">
-												<hr>
-												<div class="form-group row">
-													<div class="col-sm-6 mb-3 mb-sm-0">
+</div>
+						
+	<div class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    
+                        <form class="user" th:action="@{/cliente/save}" th:object="${cliente}" method="post">
+									<hr>
+												<div class="row d-flex align-items-center">
+													<div class="col-1">											
+														<i class="fa fa-address-card fa-2x"></i>													
+													</div>
+													<div class="col-5">
 														<input type="text" class="form-control form-control-user"
 															th:field="*{cedula}" placeholder="C&eacute;dula">
 													</div>
 													
 												</div>
 												<hr>
-												<div class="form-group row">
-													<div class="col-sm-6 mb-3 mb-sm-0">
+												<div class="row d-flex align-items-center">
+												<div class="col-1">											
+														<i class="fa fa-user fa-2x"></i>													
+													</div>
+													<div class="col-5">
 														<input type="text" class="form-control form-control-user"
 															th:field="*{nombre}" placeholder="Nombres">
 													</div>
-													<div class="form-group col-sm-6">
+													<div class="col-1">											
+														<i class="fa fa-user fa-2x"></i>													
+													</div>
+													<div class="col-5">
 														<input type="text" class="form-control form-control-user"
 															th:field="*{apellido}" placeholder="Apellidos">
 													</div>
 												</div>
-												<div class="form-group row">
-													<div class="col-sm-6 mb-3 mb-sm-0">
+												<hr>
+												<div class="row d-flex align-items-center">
+												<div class="col-1">											
+														<i class="fa fa-user-circle fa-2x"></i>													
+													</div>
+													<div class="col-5">
 														<input type="text" class="form-control form-control-user"
 															th:field="*{usuario}" placeholder="Usuario">
 													</div>
-													<div class="form-group col-sm-6">
+													<div class="col-1">											
+														<i class="fa fa-key fa-2x"></i>													
+													</div>
+													<div class="col-5">
 														<input type="password" class="form-control form-control-user"
-															th:field="*{contrasenia}" placeholder="Contrase&ntilde;a">
+															th:field="*{password}" placeholder="Password">
 													</div>
 												</div>
-												<div class="form-group row">
-													<div class="col-sm-6 mb-3 mb-sm-0">
+												<hr>
+												<div class="row d-flex align-items-center">
+												<div class="col-1">											
+														<i class="fas fa-envelope fa-2x"></i>													
+													</div>
+													<div class="col-5">
 														<input type="email" class="form-control form-control-user"
 															th:field="*{email}"
 															placeholder="Correo electr&oacute;nico">
 													</div>
-													<div class="col-sm-6 mb-3 mb-sm-0">
+													<div class="col-1">											
+														<i class="fas fa-phone fa-2x"></i>													
+													</div>
+													<div class="col-5">
 														<input type="text" class="form-control form-control-user"
 															th:field="*{telefono}" placeholder="Tel&eacute;fono">
 													</div>
 												</div>
-												<h6>Fecha de Nacimiento:</h6>
-												<div class="form-group row">
-													<div class="col-sm-6 mb-3 mb-sm-0">
+												<hr>
+												<h6>Fecha de Nacimiento:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sexo:</h6>
+												<div class="row d-flex align-items-center">
+												<div class="col-1">											
+														<i class="fas fa-calendar fa-2x"></i>													
+													</div>
+													<div class="col-5">
 														<input type="date" class="form-control form-control-user"
 															th:field="*{fechaNacimiento}" > 
 													</div>
+													<div class="col-1">											
+														<i class="fas fa-venus-mars fa-2x"></i>													
+													</div>
+													<div class="col-5">
+													<div class="form-control">													
+														&nbsp;&nbsp;<label class="radio-inline"><input type="radio" th:field="*{sexo}" value="M" />&nbsp;&nbsp;Mujer</label>
+														&nbsp;&nbsp;&nbsp;&nbsp;<label class="radio-inline"><input type="radio" th:field="*{sexo}" value="H" />&nbsp;&nbsp;Hombre</label>
+													</div>
+												</div>
 													
 												</div>
-												<h6>Sexo:</h6>
-												<div class="form-group">
-													<div class="col-sm-6 mb-3 mb-sm-0">
-														<label class="radio-inline"><input type="radio"
-															th:field="*{sexo}" value="Mujer" checked />&nbsp;Mujer</label>
-													</div>
-													<div class="col-sm-6">
-														<label class="radio-inline"><input type="radio"
-															th:field="*{sexo}" value="Hombre" />&nbsp;Hombre</label>
-													</div>
-												</div>
-
+												<hr>
+												
 												<h6>Datos de ingreso:</h6>
-												<div class="form-group row">
-													<div class="col-sm-6 mb-3 mb-sm-0">
+												<div class="row d-flex align-items-center">
+												<div class="col-1">											
+														<i class="fas fa-calendar fa-2x"></i>													
+													</div>
+													<div class="col-5">
 														<input type="date" class="form-control form-control-user"
 															th:field="*{fechaIngreso}">
 													</div>
-													<div class="col-sm-6 mb-3 mb-sm-0">
+													<div class="col-1">											
+														<i class="fa fa-credit-card fa-2x"></i>													
+													</div>
+													<div class="col-5">
 														<input type="text" class="form-control form-control-user"
 															th:field="*{montoIngreso}" placeholder="Monto de ingreso">
 													</div>
 												</div>
 
 												<hr>
-												<div class="form-group row">
+												<div class="row d-flex align-items-center">
 													<div class="col-sm-6 mb-3 mb-sm-0">
 														<input type="submit"
 															class="btn btn-success btn-user btn-block"
@@ -121,27 +144,28 @@
 												<input type="hidden" th:field="*{idpersona}" />
 
 											</form>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
+											<br>
+              
+                </div>
 
-					</div>
-
-
-
-				</div>
-				<!-- /.container-fluid -->
-
-			</div>
-
-			<footer th:replace="layout :: frgFooter"></footer>
-
-		</div>
-
-	</div>
-
+                <div class="col-md-6">
+                	<div class="full paddding_left_50">
+                        <div class="heading_main text_align_center">
+						   <h2><span class="theme_color">Nuevo</span> Cliente</h2>	
+                        </div>
+                    <div class="full text_align_right_img">
+                        <img th:src="@{/images/nuevo_user.png} " width="400" height="400" />
+                    </div>
+                </div>
+                </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+		
+<footer th:replace="layout :: frgFooter"></footer>
+<div th:replace="layout :: frgScripts"> </div>
 
 </body>
 </html>

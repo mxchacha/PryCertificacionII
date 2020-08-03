@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+
+<body>
+
+<header th:replace="layout :: frgHead"></header>
+<nav th:replace="layout :: frgSideBar"></nav>
+
+
+	<div class="section white_fonts" style="background: #2a2a2a;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6" >
+                    <div class="full text_align_left_img">
+                    <br>
+                    <br>
+                    <br>
+                        <img th:src="@{/images/login.jpg}"  width="500" height="400"/>
+                    </div>
+                </div>
+                <div class="col-md-6 layout_padding">
+                    <div class="full paddding_left_15">
+                    <br>
+                  
+                        <div class="heading_main text_align_center">
+                           <h2><span class="theme_color">Iniciar Sesion</span></h2>    
+                        </div>
+                    </div>
+                    <div class="full paddding__15">
+                    <br>
+											<form th:action="@{/login}" method="post">
+												<div class="row d-flex align-items-center">
+													<div class="col-1">
+														<i class="fa fa-user fa-2x"></i>													
+													</div>
+													<div class="col-11">
+														<input type="text" class="form-control"name="username" id="username" placeholder="Usuario"/>													
+													</div>
+												</div>
+												<hr>
+												<div class="row d-flex align-items-center">
+													<div class="col-1">
+														<i class="fas fa-key fa-2x"></i>																											
+													</div>
+													<div class="col-11">
+														<input type="password" class="form-control" name="password" id="password" placeholder="Password"/>													
+													</div>
+												</div>	
+												<hr>
+												<div class="d-flex justify-content-center">																																
+													<button class="btn btn-sm academy-btn btn-3" type="submit"><i class="fas fa-sign-in-alt"></i> &nbsp;Ingresar</button>
+													<button class="btn btn-sm academy-btn btn-2 ml-2" type="reset"><i class="fas fa-times"></i> &nbsp;Cancelar</button>
+												</div>												
+												<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+											</form>	                    
+                    	
+                        
+                        
+                        
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+	
+	
+	<footer th:replace="layout :: frgFooter"></footer>
+	
+</body>
+
+</html>

@@ -39,7 +39,8 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
 			.antMatchers("/","/css/**","/fonts/**","/images/**","/js/**","/php/**","/vendor/**").permitAll()
-			.antMatchers("/cliente/**").anonymous()
+			.antMatchers("/cliente/**").hasAnyRole("ADMIN")
+			.antMatchers("/usuario/**").anonymous()
 			.antMatchers("/cuenta/**").hasAnyRole("ADMIN")
 			.antMatchers("/alumno/**").hasAnyRole("USER")
 			.antMatchers("/profesor/**").hasAnyRole("USER")
@@ -47,7 +48,7 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
 			.antMatchers("/h2-console/**").hasAnyRole("ADMIN")
 			.anyRequest().authenticated()
 			.and().formLogin().permitAll()	
-			//.and().formLogin().successHandler(handler).loginPage("/login").permitAll()			
+			.and().formLogin().successHandler(handler).loginPage("/login").permitAll()			
 			.and().logout().permitAll()			
 			.and().exceptionHandling().accessDeniedPage("/error_403")
 			.and()

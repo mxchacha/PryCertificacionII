@@ -750,6 +750,11 @@ a.navbar-brand {
     text-transform: uppercase;
     line-height: normal;
 }
+.slide_text h2 strong {
+    font-size: 80px;
+    
+    line-height: normal;
+}
 
 .slide_text h4 {
     font-size: 30px;

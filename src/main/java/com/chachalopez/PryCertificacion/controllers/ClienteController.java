@@ -1,14 +1,23 @@
 package com.chachalopez.PryCertificacion.controllers;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.chachalopez.PryCertificacion.models.entities.Cliente;
@@ -71,9 +80,34 @@ public class ClienteController {
 		}
 	  
 	  @PostMapping(value="/save")
-	  public String save(Cliente cliente,Model model) {
-		  this.srvCliente.save(cliente);
-		  return "redirect:/cliente/list";  
+	  public String save(@Validated Cliente cliente,Model model,  BindingResult result,
+				SessionStatus status, RedirectAttributes flash) {
+		  
+		  
+		  try {
+				
+				String message = "Cliente agregado correctamente";
+				String titulo = "Nuevo registro de cliente";
+				
+				if(cliente.getIdpersona() != null) {
+					message = "Cliente actualizado correctamente";
+					titulo = "Actualizando el registro de " + cliente;
+				}
+							
+				if(result.hasErrors()) {
+					model.addAttribute("title", titulo);							
+					return "cliente/form";				
+				}											
+				srvCliente.save(cliente);	
+				status.setComplete();
+				flash.addFlashAttribute("success", message);
+			}
+			catch(Exception ex) {
+				flash.addFlashAttribute("error", ex.getMessage());
+			}				
+			return "redirect:/cliente/list";
+		  
+		  
 	  }
 
 	  

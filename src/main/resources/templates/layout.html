@@ -41,6 +41,8 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 </head>
 
@@ -177,6 +179,65 @@
     
     <!-- Start Footer -->
     <footer th:fragment="frgFooter" class="footer-box">
+    
+    	<!-- SweetAlert -->
+		<div class="row">
+			<div class="col-12">
+				<div id="success-alert" th:if="${success != null}">
+
+					<script th:inline="javascript">
+						/*<![CDATA[*/
+						var message = /*[[${success}]]*/
+						swal({
+							title : "Correcto",
+							text : message,
+							icon : "success",
+							button : "Aceptar",
+						});
+						/*]]>*/
+					</script>
+				</div>
+				<div id="success-error" th:if="${error != null}">
+
+					<script th:inline="javascript">
+						/*<![CDATA[*/
+						var message = /*[[${error}]]*/
+						swal({
+							title : "Error",
+							text : message,
+							icon : "error",
+							button : "Aceptar",
+						});
+						/*]]>*/
+					</script>
+
+				</div>
+				<div id="warning-alert" th:if="${warning != null}">
+						<script th:inline="javascript">
+							/*<![CDATA[*/
+
+							var message = /*[[${warning}]]*/
+							swal({
+									text: message,
+									icon: 'warning',
+									buttons: true,
+									});
+									
+
+							/*]]>*/
+						</script>
+					</div>
+			</div>
+		</div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
         <div class="container">
             <div class="row">
                <div class="col-md-12 white_fonts">

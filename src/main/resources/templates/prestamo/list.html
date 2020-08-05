@@ -22,11 +22,12 @@
 					<table class="table table-hover">
 						<thead>
 							<tr>
-								<th>Num. Pr&eacute;stamo</th>
-								<th>N&uacute;mero de cuenta</th>
-								<th>Tipo de prestamo</th>
-								<th>Monto</th>
-								<th>Tiempo</th>
+								<th><i class="far fa-id-card"></i> Num. Pr&eacute;stamo</th>
+								<th><i class="fa fa-address-card"></i> N&uacute;mero de cuenta</th>
+								<th><i class="fab fa-typo3"></i>  Tipo de prestamo</th>
+								<th><i class="far fa-money-bill-alt"></i> Monto</th>
+								<th><i class="fas fa-hourglass-half"></i> Tiempo</th>
+								<th><i class="fas fa-users"></i> Garantes</th>
 								<th><a class="btn btn-sm btn-success"
 									th:href="@{/prestamo/create}">&nbsp;Nuevo</a></th>
 							</tr>
@@ -40,9 +41,9 @@
 								<td th:text="${p.tiempo}"></td>
 								
 								<td><a class="btn btn-sm btn-warning"
-									th:href="@{/prestamo/update/} + ${p.idprestamo}">&nbsp;Actualizar</a>
+									th:href="@{/prestamo/update/} + ${p.idprestamo}"><i class="fas fa-edit"></i></a>
 									<a class="btn btn-sm btn-info"
-									th:href="@{/prestamo/retrieve/} + ${p.idprestamo}">&nbsp;Consultar</a>
+									th:href="@{/prestamo/retrieve/} + ${p.idprestamo}"><i class="fas fa-eye"></i></a>
 								</td>
 							</tr>
 						</tbody>

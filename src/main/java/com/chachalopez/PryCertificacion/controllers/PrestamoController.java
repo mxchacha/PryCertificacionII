@@ -58,7 +58,7 @@ public class PrestamoController {
 		  Prestamo prestamo=new Prestamo();
 		  prestamo.setGarantias(new ArrayList<Garantia>());
 		  model.addAttribute("title", "Registro de nuevo prestamo");
-		  model.addAttribute("Prestamo", prestamo);/*Similar al ViewBag*/
+		  model.addAttribute("prestamo", prestamo);/*Similar al ViewBag*/
 		  //se va enviar una lista de cuentas
 		  List<Cuenta> cuentas = srvCuenta.findAll();
 		  model.addAttribute("cuentas", cuentas);
@@ -115,11 +115,11 @@ public class PrestamoController {
 		}
 	  
 	  @PostMapping(value="/save")
-	  public String save(Prestamo prestamo,Model model,SessionStatus status, RedirectAttributes flash, HttpSession session ) {
-		  this.srvPrestamo.save(prestamo);
-		  
+	  public String save(@Validated Prestamo prestamo,BindingResult result, Model model,SessionStatus status, RedirectAttributes flash, HttpSession session ) {
+		
 		  Prestamo prestamoSession = (Prestamo) session.getAttribute("Prestamo");
-			for(Garantia p : prestamoSession.getGarantias()) {
+			
+		  for(Garantia p : prestamoSession.getGarantias()) {
 				prestamo.getGarantias().add(p);
 			}
 			

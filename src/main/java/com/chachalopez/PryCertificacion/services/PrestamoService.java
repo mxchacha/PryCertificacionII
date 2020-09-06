@@ -37,21 +37,21 @@ public class PrestamoService implements IPrestamoService {
 		}
 	}
 
-	@Override
+	
 	@Transactional
 	public Prestamo findById(Integer id) {
 		// TODO Auto-generated method stub
 		return dao.findById(id).get();
 	}
 
-	@Override
+	
 	@Transactional
 	public void delete(Integer id) {
 		dao.deleteById(id);
 		
 	}
 
-	@Override
+
 	@Transactional
 	public List<Prestamo> findAll() {
 		// TODO Auto-generated method stub

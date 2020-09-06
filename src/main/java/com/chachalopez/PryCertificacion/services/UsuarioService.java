@@ -50,4 +50,9 @@ public class UsuarioService implements UserDetailsService{
 	public List<Usuario> findAll(){		
 		return (List<Usuario>) dao.findAll();
 	}
+
+	public Usuario findByNombre(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

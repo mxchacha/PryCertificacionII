@@ -113,8 +113,8 @@ public class Garantia implements Serializable {
 		return prestamoid;
 	}
 
-	public void setPrestamoid(int id) {
-		this.prestamoid = id;
+	public void setPrestamoid(int prestamoid) {
+		this.prestamoid = prestamoid;
 	}
 	
 	

@@ -18,6 +18,7 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+
 @Entity
 @Table(name="prestamos")
 public class Prestamo implements Serializable {
@@ -72,6 +73,8 @@ public class Prestamo implements Serializable {
 	
 
 	public List<Garantia> getGarantias() {
+		if(garantias == null)
+			garantias = new ArrayList<Garantia>();
 		return garantias;
 	}
 

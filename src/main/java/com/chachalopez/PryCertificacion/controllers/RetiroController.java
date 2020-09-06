@@ -9,10 +9,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.chachalopez.PryCertificacion.models.entities.Cuenta;
 import com.chachalopez.PryCertificacion.models.entities.Retiro;
+import com.chachalopez.PryCertificacion.models.reporting.RptRetiro;
 import com.chachalopez.PryCertificacion.services.ICuentaService;
 import com.chachalopez.PryCertificacion.services.IRetiroService;
 
@@ -86,7 +88,23 @@ public class RetiroController {
 		  this.srvRetiro.save(retiro);
 		  return "redirect:/retiro/list";  
 	  }
-
+//-------------------------Reporte de retiro-------------------------------------------
+		//Hasta aqui bien
+		@GetMapping(value = "/rptRetiro")
+		public String rptRetiro(Model model) {
+			return "retiro/rptRetiro";				
+		}
+		
+		 
+		@GetMapping(value = "/dataRptRetiro", produces="application/json")
+		public @ResponseBody List<RptRetiro> dataRptRetiro(Model model) {				
+			try {			
+				return this.srvRetiro.rptRetiro();
+			} catch (Exception ex) {
+				System.out.println(ex.getMessage());
+				return null;
+			}		
+		}
 	  
 }
 

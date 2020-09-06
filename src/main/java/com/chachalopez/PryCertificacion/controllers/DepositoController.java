@@ -9,10 +9,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.chachalopez.PryCertificacion.models.entities.Cuenta;
 import com.chachalopez.PryCertificacion.models.entities.Deposito;
+import com.chachalopez.PryCertificacion.models.reporting.RptDeposito;
 import com.chachalopez.PryCertificacion.services.ICuentaService;
 import com.chachalopez.PryCertificacion.services.IDepositoService;
 
@@ -86,7 +88,24 @@ public class DepositoController {
 		  this.srvDeposito.save(deposito);
 		  return "redirect:/deposito/list";  
 	  }
-
+	  
+//-------------------------Reporte de deposito-------------------------------------------
+		//Hasta aqui bien
+		@GetMapping(value = "/rptDeposito")
+		public String rptDeposito(Model model) {
+			return "deposito/rptDeposito";				
+		}
+		
+		 
+		@GetMapping(value = "/dataRptDeposito", produces="application/json")
+		public @ResponseBody List<RptDeposito> dataRptDeposito(Model model) {				
+			try {			
+				return this.srvDeposito.rptDeposito();
+			} catch (Exception ex) {
+				System.out.println(ex.getMessage());
+				return null;
+			}		
+		}
 	  
 }
 

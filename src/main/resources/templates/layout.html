@@ -34,6 +34,7 @@
     <link  th:href="@{/css/custom.css}" rel="stylesheet"/>
     <link  th:href="@{/css/all.css}" rel="stylesheet"/>
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     
     
 
@@ -43,6 +44,7 @@
     <![endif]-->
     
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3"></script>
 
 </head>
 
@@ -117,6 +119,12 @@
                         <li><a class="nav-link" th:href="@{/cuenta/list}">Cuenta</a></li>
                         <li><a class="nav-link" th:href="@{/prestamo/list}">Prestamo</a></li>
                         <li><a class="nav-link" th:href="@{/capital/list}">Capital</a></li>
+                        <li><a href="#">Reportes</a>
+                        <ul class="dropdown">
+							<li><a th:href="@{/deposito/rptDeposito}">Deposito</a></li>
+							<li><a th:href="@{/retiro/rptRetiro}">Retiro</a></li>
+							
+						</ul></li>
                     </ul>
                 </div>
                      </div>
@@ -325,7 +333,8 @@
     <script th:src="@{/js/isotope.min.js}"></script>
     <script th:src="@{/js/images-loded.min.js}"></script>
     <script th:src="@{/js/custom.js}"></script>
-     <script th:src="@{/js/jquery/jquery-2.2.4.min.js}"></script>
+    <script th:src="@{/js/layout-util.js}"></script>
+    
 	
 	</div>
    

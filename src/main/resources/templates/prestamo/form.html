@@ -69,7 +69,8 @@
 															th:field="*{tiempo}" placeholder="Tiempo">
 													</div>
 												</div>
-												
+												<hr>
+												<div id="lstGarantias"></div>
 
 												<hr>
 												<div class="form-group row">
@@ -103,6 +104,8 @@
 			</div>
 
 			<footer th:replace="layout :: frgFooter"></footer>
+			<div th:replace="layout :: frgScripts"></div>
+			<script th:src="@{/js/prestamo/add-garantias.js}"></script>
 
 		</div>
 

@@ -36,6 +36,7 @@ public class ClienteController {
 	  @GetMapping(value="/create")
 	  public String create(Model model) {
 		  Cliente cliente=new Cliente();
+		  cliente.setFechaIngreso(cliente.Ingreso());
 		  model.addAttribute("title", "Registro de nuevo cliente");
 		  model.addAttribute("cliente", cliente);/*Similar al ViewBag*/
 		  return "cliente/form";/*Ubicación de la vista*/

@@ -82,18 +82,18 @@
 									              
           				    </li>
                             <li sec:authorize="isAuthenticated()" class="nav-item dropdown no-arrow">
-									  <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" >
-									         <span sec:authentication="name" class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
-									         
-									          </a>
-  
-									   <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-									          <div class="dropdown-divider"></div>
-									              <form id="frmLogout" th:action="@{/logout}" method="post">
-														<i class="fas fa-sign-out-alt"></i>&nbsp;<a href="#" onclick="document.getElementById('frmLogout').submit();">Salir</a>
-														<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
-												</form>
-									   </div>
+									  <div class="login-content" sec:authorize="isAuthenticated()">
+								<i class="fas fa-user"></i>&nbsp;<a href="#"><span
+									sec:authentication="name"></span></a>
+								<div sec:authorize="isAuthenticated()">
+									<form id="frmLogout" th:action="@{/logout}" method="post">
+										<i class="fas fa-sign-out-alt"></i>&nbsp;<a href="#"
+											onclick="document.getElementById('frmLogout').submit();">Salir</a>
+										<input type="hidden" th:name="${_csrf.parameterName}"
+											th:value="${_csrf.token}" />
+									</form>
+								</div>
+							</div>
           				  </li>
                         </ul>
                     </div>
@@ -119,15 +119,17 @@
                         <li><a class="nav-link" th:href="@{/cuenta/list}">Cuenta</a></li>
                         <li><a class="nav-link" th:href="@{/prestamo/list}">Prestamo</a></li>
                         <li><a class="nav-link" th:href="@{/capital/list}">Capital</a></li>
-                        <li><a href="#">Reportes</a>
-                        <ul class="dropdown">
-							<li><a th:href="@{/deposito/rptDeposito}">Deposito</a></li>
-							<li><a th:href="@{/retiro/rptRetiro}">Retiro</a></li>
-							
-						</ul></li>
+                        <li>
+                        <a class="nav-link" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Reportes</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+							    <a class="dropdown-item" th:href="@{/deposito/rptDeposito}">Deposito</a>
+							    <a class="dropdown-item" th:href="@{/retiro/rptRetiro}">Retiro</a>
+							    
+							  </div>
+                        </li>
+								
                     </ul>
                 </div>
-                     </div>
                  </nav>
                  <div class="search-box">
                     <input type="text" class="search-txt" placeholder="Search">

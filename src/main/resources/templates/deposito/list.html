@@ -2,31 +2,37 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="layout :: frgHead"></head>
 <body id="page-top">
-
-	<div id="wrapper">
-		
-		<div id="content-wrapper" class="d-flex flex-column">
-
-			<div id="content">
-
-				<nav th:replace="layout :: frgSideBar"></nav>
-
-				<!-- Begin Page Content -->
-				<div class="container-fluid">
-
-					<!-- Page Heading -->
-					<div
-						class="d-sm-flex align-items-center justify-content-between mb-4">
-						<h1 th:text="${title}" class="h3 mb-0 text-gray-800"></h1>
-					</div>					
+<div id="wrapper">
+	<div id="content-wrapper" class="d-flex flex-column">
+		<div id="content">
+		<nav th:replace="layout :: frgSideBar"></nav>
+		<br>
+		<br>
+	<div class="top-popular-courses-area mt-100 section-padding-100-70">
+		<section class="contact-area mt-100">
+			<div class="container">
+				<div class="row">
+					<div class="col-12">
+						<div class="contact-content">
+							<div class="row">
+								<div class="col-12">
+									<div class="section-heading text-center">
+										
+											<h4 th:text="${title}"></h4>											
+										</div>
+									<div class="contact-form-area wow fadeInUp"
+										data-wow-delay="500ms">
+									
+														
 					<table class="table table-hover">
 						<thead>
 							<tr>
-								<th>N&uacute;mero de cuenta</th>
-								<th>Fecha de Deposito</th>
-								<th>Monto</th>
+								<th><i class="fa fa-address-card">&nbsp;</i>N&uacute;mero de cuenta</th>
+								<th><i class="fa fa-calendar">&nbsp;</i>Fecha Retiro</th>
+								<th><i class="fa fa-dollar-sign">&nbsp;</i>Monto</th>
+								<th><i class="fa fa-dollar-sign">&nbsp;</i>Saldo</th>
 								<th><a class="btn btn-sm btn-success"
-									th:href="@{/deposito/create}">&nbsp;Nuevo</a></th>
+									th:href="@{/deposito/create}">&nbsp;Nuevo Dep&oacute;sito</a></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -34,6 +40,7 @@
 								<td th:text="${d.cuenta.toString()}"></td>
 								<td th:text="${d.fechaDep()}"></td>
 								<td th:text="${d.monto}"></td>
+								<td th:text="${d.cuenta.saldo}"></td>
 								<td><a class="btn btn-sm btn-warning"
 									th:href="@{/deposito/update/} + ${d.iddeposito}">&nbsp;Actualizar</a>
 									<a class="btn btn-sm btn-info"
@@ -42,18 +49,21 @@
 							</tr>
 						</tbody>
 					</table>
-
+						
+									</div>
+									
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
-				<!-- /.container-fluid -->
-
 			</div>
-			
-			<footer th:replace="layout :: frgFooter"></footer>
-
-		</div>
-
+		</section>
 	</div>
-	
+</div>
+</div>		
+<footer th:replace="layout :: frgFooter"></footer>
+</div>
 
 </body>
 </html>

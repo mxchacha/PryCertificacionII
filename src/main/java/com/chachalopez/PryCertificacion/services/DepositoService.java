@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.chachalopez.PryCertificacion.models.dao.IDeposito;
+import com.chachalopez.PryCertificacion.models.entities.Cuenta;
 import com.chachalopez.PryCertificacion.models.entities.Deposito;
 import com.chachalopez.PryCertificacion.models.reporting.RptDeposito;
 
@@ -31,6 +32,13 @@ public class DepositoService implements IDepositoService {
 	@Override
 	@Transactional
 	public void save(Deposito deposito) {
+		
+		
+		float ingreso;
+		ingreso=deposito.getMonto();
+		System.out.println(ingreso);
+		deposito.getCuenta().ingresar(ingreso);
+		
 		dao.save(deposito);
 		
 	}

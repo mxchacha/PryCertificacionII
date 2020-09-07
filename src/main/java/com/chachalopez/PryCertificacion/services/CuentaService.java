@@ -18,8 +18,10 @@ public class CuentaService implements ICuentaService {
 	
 	@Override
 	@Transactional
-	public void save(Cuenta cuenta) {
-		dao.save(cuenta);
+	public void save(Cuenta cuenta) {	
+
+	
+	dao.save(cuenta);
 		
 	}
 

@@ -1,23 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-
-<body id="page-top">
-
 <header th:replace="layout :: frgHead"></header>
+<body id="page-top">
 <nav th:replace="layout :: frgSideBar"></nav>
 <br>
 <br>
 <div class="container shadow-lg my-5" >
-	<div class="col-12">
-		<span>Formulario</span>
-				<h4 th:text="${title}"></h4>
-	<div class="contact-form-area wow fadeInUp"data-wow-delay="500ms">
-	</div>
-	</div>
-
-
-</div>
-						
+	<div class="heading_main text_align_center">
+	<h2><span class="theme_color">Nuevo</span> Cliente</h2>	
+     </div>
+</div>			
 	<div class="section">
         <div class="container">
             <div class="row">
@@ -135,7 +127,7 @@
                 <div class="col-md-6">
                 	<div class="full paddding_left_50">
                         <div class="heading_main text_align_center">
-						   <h2><span class="theme_color">Nuevo</span> Cliente</h2>	
+						  
                         </div>
                     <div class="full text_align_right_img">
                         <img th:src="@{/images/nuevo_user.png} " width="400" height="400" />
@@ -146,8 +138,6 @@
                 </div>
             </div>
         </div>
-    </div>
-		
 <footer th:replace="layout :: frgFooter"></footer>
 <div th:replace="layout :: frgScripts"> </div>
 

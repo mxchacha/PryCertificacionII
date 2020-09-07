@@ -51,6 +51,8 @@ public class Deposito implements Serializable {
 	public Deposito() {
 		super();
 	}
+	
+	
 	public Cuenta getCuenta() {
 		return cuenta;
 	}
@@ -63,6 +65,7 @@ public class Deposito implements Serializable {
 	}
 	public Integer getIddeposito() {
 		return iddeposito;
+		
 	}
 	public void setIddeposito(Integer iddeposito) {
 		this.iddeposito = iddeposito;
@@ -80,6 +83,9 @@ public class Deposito implements Serializable {
 		this.monto = monto;
 	}
 	
+	
+	
+	
 //------------------------------ METODOS ----------------------
 	@Override
 	public String toString() {
@@ -90,6 +96,8 @@ public class Deposito implements Serializable {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MMM/yyyy");
 		return sdf.format(fechaDeposito.getTime());
 	}
+	
+
 	
 	
 	

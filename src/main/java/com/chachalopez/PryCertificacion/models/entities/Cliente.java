@@ -86,6 +86,10 @@ public class Cliente extends Persona implements Serializable{
 		return sdf.format(fechaIngreso.getTime());
 	}
 
+	public Calendar Ingreso() {
+		Calendar fecha=Calendar.getInstance();
+		return fecha;
+	}
 	
 	
 	

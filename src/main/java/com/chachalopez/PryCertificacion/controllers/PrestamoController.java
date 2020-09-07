@@ -28,14 +28,14 @@ import com.chachalopez.PryCertificacion.models.entities.TipoPrestamo;
 import com.chachalopez.PryCertificacion.models.entities.Prestamo;
 import com.chachalopez.PryCertificacion.services.ICosaService;
 import com.chachalopez.PryCertificacion.services.ICuentaService;
+import com.chachalopez.PryCertificacion.services.IGarantiaService;
 import com.chachalopez.PryCertificacion.services.IPrestamoService;
 import com.chachalopez.PryCertificacion.services.ITipoPrestamoService;
 
 
 
-
 @Controller
-@SessionAttributes("Prestamo")
+@SessionAttributes("prestamo")//significa que cuando se cree algun "prestamo"-"elemento" se guarde por sesion. 
 @RequestMapping(value="/prestamo")
 public class PrestamoController {
 	
@@ -52,13 +52,20 @@ public class PrestamoController {
 	  
 	  @Autowired
 	  private ICosaService srvCosa;
+	  
+	  /*@Autowired
+	  private IGarantiaService srvGarantia;*/
 
 	  @GetMapping(value="/create")
 	  public String create(Model model) {
-		  Prestamo prestamo=new Prestamo();
+		  
+		  Prestamo prestamo = new Prestamo();
+		  //---------------------Para el maestro detalle--------------------
 		  prestamo.setGarantias(new ArrayList<Garantia>());
+		  //-----------------------------------------------------------------
 		  model.addAttribute("title", "Registro de nuevo prestamo");
 		  model.addAttribute("prestamo", prestamo);/*Similar al ViewBag*/
+		  
 		  //se va enviar una lista de cuentas
 		  List<Cuenta> cuentas = srvCuenta.findAll();
 		  model.addAttribute("cuentas", cuentas);
@@ -114,11 +121,13 @@ public class PrestamoController {
 			return "prestamo/list";		
 		}
 	  
-	  @PostMapping(value="/save")
+	  
+	  
+	 /* @PostMapping(value="/save")
 	  public String save(@Validated Prestamo prestamo,BindingResult result, Model model,SessionStatus status, RedirectAttributes flash, HttpSession session ) {
 		
 		  Prestamo prestamoSession = (Prestamo) session.getAttribute("Prestamo");
-			
+			/*
 		  for(Garantia p : prestamoSession.getGarantias()) {
 				prestamo.getGarantias().add(p);
 			}
@@ -127,15 +136,65 @@ public class PrestamoController {
 			status.setComplete();
 			
 		  return "redirect:/prestamo/list";  
-	  }
+	  }*/
+	  
+	  @PostMapping(value = "/save") // https://localhost:8080/prestamo/save
+		public String save(@Validated Prestamo prestamo, BindingResult result, Model model,SessionStatus status, RedirectAttributes flash, HttpSession session) {
+			try {
+				
+				String message = "Prestamo agregado con exito";
+				String titulo = "Registro de un nuevo Prestamo";
+				
+				if(prestamo.getIdprestamo() != null) {
+					message = "Prestamo actualizado con exito";
+					titulo = "Actualizando Prestamo N°" + prestamo.getIdprestamo();
+				}
+				
+				if(result.hasErrors()) {
+					model.addAttribute("title",titulo);
+					model.addAttribute("error", "Error agregar prestamo");
+					List<TipoPrestamo> tipoprestamo = srvTipoPrestamo.findAll();
+					model.addAttribute("tipoPrestamo",tipoprestamo);
+					return "gira/form";
+				}
+				
+				/*if (!image.isEmpty()) {				
+					Path dir = Paths.get("src//main//resources//static//photos//gira");
+					String rootPath = dir.toFile().getAbsolutePath();
+					try {
+						byte[] bytes = image.getBytes();
+						Path rutaCompleta = Paths.get(rootPath + "//" + image.getOriginalFilename());
+						Files.write(rutaCompleta, bytes);
+						gira.setImagen(image.getOriginalFilename());
+
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}*/
+				Prestamo prestamoSession = (Prestamo) session.getAttribute("prestamo");
+				for(Garantia p : prestamoSession.getGarantias()) {
+					prestamo.getGarantias().add(p);
+				}
+				
+				srvPrestamo.save(prestamo);
+				status.setComplete();
+				flash.addFlashAttribute("success", message);
+			}
+			catch(Exception ex) {
+				flash.addFlashAttribute("success", ex.getMessage());
+			}
+			return "redirect:/prestamo/list";		
+		}
+	  
 
 	  @PostMapping(value = "/add", produces="application/json")
 		public @ResponseBody Object add(@RequestBody @Validated Garantia garantia, 
 				BindingResult result, Model model, HttpSession session) {				
 			try {
-				Cosa cosa = this.srvCosa.findById(garantia.getCosaid());			
+				Cosa cosa = this.srvCosa.findById(garantia.getCosaid());	
+				//Prestamo prestamo = this.srvPrestamo.findById(garantia.getCosaid());	
 				garantia.setObjeto(cosa);
-				Prestamo prestamo = (Prestamo) session.getAttribute("Prestamo");
+				Prestamo prestamo = (Prestamo) session.getAttribute("prestamo");
 				prestamo.getGarantias().add(garantia);
 				return garantia;
 			} catch (Exception ex) {			
@@ -145,9 +204,9 @@ public class PrestamoController {
 	   
 	  @GetMapping(value = "/things")
 		public String things(Model model, HttpSession session) {
-			Prestamo prestamo = (Prestamo) session.getAttribute("Prestamo");
+			Prestamo prestamo = (Prestamo) session.getAttribute("prestamo");
 			model.addAttribute("garantias", prestamo.getGarantias());		
-			model.addAttribute("title", "Listado de garantias");
+			//model.addAttribute("title", "Listado de garantias");
 			return "garantia/list";
 		}
 }

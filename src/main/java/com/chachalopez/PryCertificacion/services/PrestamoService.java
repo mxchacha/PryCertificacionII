@@ -18,19 +18,19 @@ public class PrestamoService implements IPrestamoService {
 	@Autowired //Inyeccion de dependencia, para instanciar
 	private IPrestamo dao;//La dao interactua con la base de datos
 	
+	//Dao de Garantia
 	@Autowired
 	private IGarantia daoGarantia;
 	
-	@Override
+	//@Override
 	@Transactional
-	public void save(Prestamo prestamo) {
+	public void save(Prestamo p) {
 		try {
-			dao.save(prestamo);
-			for(Garantia g: prestamo.getGarantias()) {
-				g.setPrestamo(prestamo);
+			dao.save(p);
+			for(Garantia g: p.getGarantias()) {
+				g.setPrestamo(p);
 				this.daoGarantia.save(g);
-		}
-		
+			}
 		}
 		catch(Exception ex) {
 			throw ex;

@@ -34,15 +34,19 @@ public class Cosa implements Serializable {
 	@Column(name="nombre")
 	private String nombre;
 	
+	public Cosa() {
+		super();
+	}
 	
+	public Cosa(Integer id) {
+		super();
+		this.idcosa=id;
+	}
+//------------------------Maestro detalle-------------------	
 	@JsonIgnore
 	@OneToMany(mappedBy="objeto", fetch=FetchType.LAZY) 
 	private List<Garantia> garantias;
 	
-	public Cosa() {
-		super();
-	}
-
 	
 	public List<Garantia> getGarantias() {
 		return garantias;
@@ -53,11 +57,9 @@ public class Cosa implements Serializable {
 		this.garantias = garantias;
 	}
 
+//------------------------------------------------------------
 
-	public Cosa(Integer id) {
-		super();
-		this.idcosa=id;
-	}
+	
 	public Integer getIdCosa() {
 		return idcosa;
 	}

@@ -66,6 +66,8 @@ public class Prestamo implements Serializable {
 	private Capital capital;
 	/*=====RELACION  UNO A MUCHOS CAPITAL-PRESTAMO======*/
 
+	
+//-----------------------Maestro detalle--------------
 	@JsonIgnore
 	@OneToMany(mappedBy="prestamo", fetch=FetchType.LAZY)
 	private List<Garantia> garantias;
@@ -81,7 +83,8 @@ public class Prestamo implements Serializable {
 	public void setGarantias(List<Garantia> garantias) {
 		this.garantias = garantias;
 	}
-
+	
+//-------------------------------------------------------
 	public Prestamo() {
 		super();
 	}

@@ -43,4 +43,6 @@ public class CosaService implements ICosaService {
 		// TODO Auto-generated method stub
 		return (List<Cosa>) dao.findAll();
 	}
+	
+	
 }

@@ -33,7 +33,8 @@ public class Garantia implements Serializable {
 	
 	@Column(name="valor")
 	private Float valor;
-	
+
+//--------------------------Maestro detalle ----------------------------------
 	@JoinColumn(name="fk_objeto", referencedColumnName="pk_cosa")
 	@ManyToOne
 	private Cosa objeto;
@@ -42,6 +43,23 @@ public class Garantia implements Serializable {
 	@ManyToOne
 	private Prestamo prestamo;
 	
+	public Cosa getObjeto() {
+		return objeto;
+	}
+
+	public void setObjeto(Cosa objeto) {
+		this.objeto = objeto;
+	}
+
+	public Prestamo getPrestamo() {
+		return prestamo;
+	}
+
+	public void setPrestamo(Prestamo prestamo) {
+		this.prestamo = prestamo;
+	}
+	
+//-------------------------------------------------------------------------	
 	public Garantia() {
 		super();
 	}
@@ -51,6 +69,8 @@ public class Garantia implements Serializable {
 		this.idgarantia = id;
 	}
 
+	
+	
 	public Integer getIdgarantia() {
 		return idgarantia;
 	}
@@ -75,21 +95,7 @@ public class Garantia implements Serializable {
 		this.valor = valor;
 	}
 
-	public Cosa getObjeto() {
-		return objeto;
-	}
-
-	public void setObjeto(Cosa objeto) {
-		this.objeto = objeto;
-	}
-
-	public Prestamo getPrestamo() {
-		return prestamo;
-	}
-
-	public void setPrestamo(Prestamo prestamo) {
-		this.prestamo = prestamo;
-	}
+	
 
 	
 	

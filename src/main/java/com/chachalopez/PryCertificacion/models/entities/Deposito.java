@@ -15,8 +15,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
+
+
 
 @Entity
 @Table(name="depositos")
@@ -37,6 +42,8 @@ public class Deposito implements Serializable {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")	
 	private Calendar fechaDeposito;
 	
+	@NotNull
+	@Size(min=1)
 	@Column(name="monto")
 	private Float monto;
 	

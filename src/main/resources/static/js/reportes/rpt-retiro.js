@@ -66,7 +66,7 @@ function report3(){
 					},
 					title: {
 						display: true,
-						text: 'Reporte de depositos por dia en el Sistema'
+						text: 'Reporte de retiros por dia en el Sistema'
 					}
 				}
 			});

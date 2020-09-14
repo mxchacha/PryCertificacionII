@@ -46,6 +46,8 @@ public class Cuenta implements Serializable {
 	@Column(name="saldo")
 	private float saldo;
 	
+	private float total;
+	
 	
 	
 	
@@ -97,6 +99,16 @@ public class Cuenta implements Serializable {
 		super();
 	}
 	
+	
+
+	public Cuenta(Integer idcuenta, float saldo) {
+		super();
+		this.idcuenta = idcuenta;
+		this.saldo = saldo;
+	}
+
+
+
 	public Cliente getCliente() {
 		return cliente;
 	}
@@ -130,11 +142,15 @@ public class Cuenta implements Serializable {
 	}
 
 	public List<Deposito> getDeposito() {
+		
 		return deposito;
+		
 	}
 
 	public void setDeposito(List<Deposito> deposito) {
+		
 		this.deposito = deposito;
+		
 	}
 
 	public List<Retiro> getRetiro() {
@@ -185,7 +201,8 @@ public class Cuenta implements Serializable {
 	Retiro ret;*/
 	public void setSaldo(float saldo) {
 		
-		this.saldo = saldo;
+		this.saldo = saldo+total;
+		System.out.println("El saldo que se manda"+saldo);
 		
 	
 	}
@@ -201,6 +218,21 @@ public class Cuenta implements Serializable {
 		return sdf.format(fechaApertura.getTime());
 	}
 	
+	public Calendar Apertura() {
+		Calendar fecha=Calendar.getInstance();
+		return fecha;
+	}
+	
+	public float ingresar(float cantidadIngreso){
+		System.out.println("la cantidad de ingre"+ cantidadIngreso);
+		total=total+cantidadIngreso;
+		System.out.println("Total"+ total);
+		return total;
+	}
+	public float retirar(float cantidadDecrementa){
+		total=total-cantidadDecrementa;
+		return total;
+	}
 	/*ACTUALIZAR SALDO
 	
 	public float depositoDin() {

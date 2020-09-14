@@ -15,8 +15,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
+
+
 
 @Entity
 @Table(name="depositos")
@@ -37,6 +42,8 @@ public class Deposito implements Serializable {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")	
 	private Calendar fechaDeposito;
 	
+	@NotNull
+	@Size(min=1)
 	@Column(name="monto")
 	private Float monto;
 	
@@ -51,6 +58,8 @@ public class Deposito implements Serializable {
 	public Deposito() {
 		super();
 	}
+	
+	
 	public Cuenta getCuenta() {
 		return cuenta;
 	}
@@ -63,6 +72,7 @@ public class Deposito implements Serializable {
 	}
 	public Integer getIddeposito() {
 		return iddeposito;
+		
 	}
 	public void setIddeposito(Integer iddeposito) {
 		this.iddeposito = iddeposito;
@@ -80,6 +90,9 @@ public class Deposito implements Serializable {
 		this.monto = monto;
 	}
 	
+	
+	
+	
 //------------------------------ METODOS ----------------------
 	@Override
 	public String toString() {
@@ -90,6 +103,8 @@ public class Deposito implements Serializable {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MMM/yyyy");
 		return sdf.format(fechaDeposito.getTime());
 	}
+	
+
 	
 	
 	

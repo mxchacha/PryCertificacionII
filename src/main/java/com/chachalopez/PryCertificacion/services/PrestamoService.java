@@ -7,9 +7,9 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.chachalopez.PryCertificacion.models.dao.IGarantia;
+import com.chachalopez.PryCertificacion.models.dao.IGarante;
 import com.chachalopez.PryCertificacion.models.dao.IPrestamo;
-import com.chachalopez.PryCertificacion.models.entities.Garantia;
+import com.chachalopez.PryCertificacion.models.entities.Garante;
 import com.chachalopez.PryCertificacion.models.entities.Prestamo;
 
 @Service
@@ -18,18 +18,19 @@ public class PrestamoService implements IPrestamoService {
 	@Autowired //Inyeccion de dependencia, para instanciar
 	private IPrestamo dao;//La dao interactua con la base de datos
 	
-	//Dao de Garantia
+	//Dao de Garantia  -- Inyeccion de dependencia, para instanciar
 	@Autowired
-	private IGarantia daoGarantia;
+	private IGarante daoGarante;
+	
 	
 	//@Override
 	@Transactional
 	public void save(Prestamo p) {
 		try {
 			dao.save(p);
-			for(Garantia g: p.getGarantias()) {
+			for(Garante g: p.getGarantes()) {
 				g.setPrestamo(p);
-				this.daoGarantia.save(g);
+				this.daoGarante.save(g);
 			}
 		}
 		catch(Exception ex) {

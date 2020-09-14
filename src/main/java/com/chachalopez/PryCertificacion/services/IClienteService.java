@@ -9,4 +9,5 @@ public interface IClienteService {
 	public Cliente findById(Integer id);
 	public void delete(Integer id);
 	public List<Cliente> findAll();
+	public List<Cliente> findByCedula(String cedula);
 }

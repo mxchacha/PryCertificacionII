@@ -31,8 +31,9 @@ public class Cosa implements Serializable {
 	@Column(name="pk_cosa")
 	private Integer idcosa;
 	
-	@Column(name="nombre")
-	private String nombre;
+	@Column(name="tipo_garantia")
+	private String tipo_garantia;
+	
 	
 	public Cosa() {
 		super();
@@ -73,11 +74,14 @@ public class Cosa implements Serializable {
 	public void setIdcosa(Integer idcosa) {
 		this.idcosa = idcosa;
 	}
-	public String getNombre() {
-		return nombre;
+	
+
+	public String getTipo_garantia() {
+		return tipo_garantia;
 	}
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+
+	public void setTipo_garantia(String tipo_garantia) {
+		this.tipo_garantia = tipo_garantia;
 	}
 	/*public Float getFondo() {
 		return fondo;

@@ -67,13 +67,12 @@ public class Prestamo implements Serializable {
 	/*=====RELACION  UNO A MUCHOS CAPITAL-PRESTAMO======*/
 
 	
+	
 //-----------------------Maestro detalle--------------
 	@JsonIgnore
 	@OneToMany(mappedBy="prestamo", fetch=FetchType.LAZY)
 	private List<Garantia> garantias;
 	
-	
-
 	public List<Garantia> getGarantias() {
 		if(garantias == null)
 			garantias = new ArrayList<Garantia>();
@@ -84,6 +83,20 @@ public class Prestamo implements Serializable {
 		this.garantias = garantias;
 	}
 	
+//-----------------------Maestro detalle- V2 -------------
+	@JsonIgnore
+	@OneToMany(mappedBy="prestamo", fetch=FetchType.LAZY)
+	private List<Garante> garantes;
+	
+	
+	public List<Garante> getGarantes() {
+		return garantes;
+	}
+
+	public void setGarantes(List<Garante> garantes) {
+		this.garantes = garantes;
+	}
+
 //-------------------------------------------------------
 	public Prestamo() {
 		super();
@@ -157,8 +170,17 @@ public class Prestamo implements Serializable {
 		this.tiempo = tiempo;
 	}
 	
+	
+	
+	
+	
+	
+	
+	
 //------------------------------ METODOS ----------------------
 	
+	
+
 	@Override
 	public String toString() {
 		return this.getNumPrestamo();

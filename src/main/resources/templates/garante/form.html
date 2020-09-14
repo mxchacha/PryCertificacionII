@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+	
+	<div class="row d-flex align-items-center">
+		<div class="col-1">
+			<i class="fas fa-layer-group"></i>
+		</div>
+		<div class="col-11">
+			<input type="text" id="txtCedula" onchange="searchByCedula();"  class="form-control"
+				placeholder="Buscar garante por c&eacute;dula" />
+		</div>
+	</div>
+	<hr>
+
+	<form id="frmGarante" 
+	class="contact-form-area ml-3 mr-3" 
+	th:object="${garante}" th:action="@{/prestamo/add}" method="post">		
+		<div class="row d-flex align-items-center">
+			<div class="col-1">
+				<i class="fas fa-book-open"></i>
+			</div>
+			<div class="col-2">
+				<small>Garante</small>
+			</div>
+			<div class="col-9">
+				<select th:field="*{clienteid}" class="form-control invisible">
+				</select>
+			</div>
+		</div>
+		<div class="row d-flex align-items-center">
+			<div class="col-1">
+				<i class="fab fa-typo3"></i>
+			</div>
+			<div class="col-2">
+				<small>Parentesco:</small>
+			</div>
+			<div class="col-9">
+				<select th:field="*{parentesco}" class="form-control">
+					<option value="Esp">Esposo/a</option>
+					<option value="Cu">Cu&ntilde;ado/a</option>
+					<option value="Prim">Primo/a</option>
+					<option value="Padre">Padre</option>
+					<option value="Madre">Madre</option>
+					<option value="Ti">Tio/a</option>
+					<option value="Abue">Abuelo/a</option>
+					<option value="Herm">Hermano/a</option>
+				</select>
+			</div>
+		</div>		
+			<div class="row d-flex align-items-center">
+			<div class="col-1">
+				<i class="fab fa-typo3"></i>
+			</div>
+			<div class="col-2">
+				<small>Ocupacion:</small>
+			</div>
+			<div class="col-9">
+				<input type="text" th:field="*{ocupacion}" class="form-control"/>
+			</div>
+		</div>
+	</form>
+	<div th:replace="layout :: frgScripts"></div>
+</body>
+</html>

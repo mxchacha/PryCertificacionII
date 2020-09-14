@@ -5,17 +5,18 @@
 	<table class="table table-hover">
 		<thead class="bg-light">
 			<tr>
-				<th><i class="fas fa-user-tie"></i>&nbsp;Nombre</th>
-				<th><i class="fas fa-calendar-alt"></i>&nbsp;Tipo de
-					financiamiento</th>
+				<th><i class="fas fa-user-tie"></i>&nbsp;Codigo</th>
+				<th><i class="fas fa-calendar-alt"></i>&nbsp;Tipo de Garantia</th>
+				<th><i class="fas fa-user-tie"></i>Nombre</th>
 				<th><i class="fas fa-calendar-alt"></i>&nbsp;Valor</th>
 				<th></th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr th:each="a : ${garantias}">
-				<td th:text="${a.objeto.nombre}"></td>
-				<td th:text="${a.tipo_financiamiento}"></td>
+				<td th:text="${a.objeto.id}"></td>
+				<td th:text="${a.objeto}"></td>
+				<td th:text="${a.nombre}"></td>
 				<td th:text="${a.valor}"></td>
 				<td>
 					<button th:onclick="|onDelete(${a.idgarantia});|"

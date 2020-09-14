@@ -15,6 +15,8 @@ import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="clientes")
 public class Cliente extends Persona implements Serializable{
@@ -23,6 +25,13 @@ public class Cliente extends Persona implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	/*@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Basic(optional = false)
+	@Column(name = "pk_cliente")
+	private Integer idcliente;
+	*/
 	
 	@Column(name="fecha_ingreso")
 	@Temporal(TemporalType.DATE)
@@ -38,9 +47,24 @@ public class Cliente extends Persona implements Serializable{
 	
 	/*=====FIN DE RELACION  UNO A MUCHOS CLIENTE-CUENTA======*/
 	
+//------------------------Maestro detalle-V2------------------	
+	
+	@JsonIgnore
+	@OneToMany(mappedBy="asegurador", fetch=FetchType.LAZY) 
+	private List<Garante> garantes;
+	
+	public List<Garante> getGarantes() {
+		return garantes;
+	}
+
+	public void setGarantes(List<Garante> garantes) {
+		this.garantes = garantes;
+	}
 	
 
-	
+//------------------------------------------------------------	
+
+
 	public Cliente() {
 		super();
 	}
@@ -74,7 +98,15 @@ public class Cliente extends Persona implements Serializable{
 		this.montoIngreso = montoIngreso;
 	}
 	
-//------------------------------ METODOS ----------------------
+/*	public Integer getIdcliente() {
+		return idcliente;
+	}
+
+	public void setIdcliente(Integer idcliente) {
+		this.idcliente = idcliente;
+	}*/
+
+	//------------------------------ METODOS ----------------------
 	@Override
 	public String toString() {
 		return this.getNombre()+" "+this.getApellido();
@@ -86,6 +118,10 @@ public class Cliente extends Persona implements Serializable{
 		return sdf.format(fechaIngreso.getTime());
 	}
 
+	public Calendar Ingreso() {
+		Calendar fecha=Calendar.getInstance();
+		return fecha;
+	}
 	
 	
 	

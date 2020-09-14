@@ -12,11 +12,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.chachalopez.PryCertificacion.models.entities.Cuenta;
+import com.chachalopez.PryCertificacion.models.entities.Deposito;
 import com.chachalopez.PryCertificacion.models.entities.Cliente;
 import com.chachalopez.PryCertificacion.models.entities.TipoCuenta;
 import com.chachalopez.PryCertificacion.services.ITipoCuentaService;
 import com.chachalopez.PryCertificacion.services.IClienteService;
 import com.chachalopez.PryCertificacion.services.ICuentaService;
+import com.chachalopez.PryCertificacion.services.IDepositoService;
 
 @Controller
 @RequestMapping(value="/cuenta")
@@ -34,10 +36,13 @@ public class CuentaController {
 	  @Autowired
 	  private ITipoCuentaService srvTipoCuenta;
 	
+	  @Autowired
+	  private IDepositoService srvDeposito;
 	  
 	  @GetMapping(value="/create")
 	  public String create(Model model) {
 		  Cuenta cuenta=new Cuenta();
+		  cuenta.setFechaApertura(cuenta.Apertura());
 		  model.addAttribute("title", "Registro de nueva cuenta");
 		  model.addAttribute("cuenta", cuenta);/*Similar al ViewBag*/
 		  //se va enviar una lista de clientes

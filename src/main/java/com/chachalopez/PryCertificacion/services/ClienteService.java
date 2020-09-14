@@ -43,4 +43,11 @@ public class ClienteService implements IClienteService{
 		// TODO Auto-generated method stub
 		return (List<Cliente>) dao.findAll();
 	}
+	
+	@Override
+	@Transactional
+	public List<Cliente> findByCedula(String cedula) {
+		// TODO Auto-generated method stub
+		return dao.findByCedulaStartingWith(cedula);
+	}
 }

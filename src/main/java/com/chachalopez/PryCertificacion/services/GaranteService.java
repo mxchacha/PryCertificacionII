@@ -7,27 +7,25 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.chachalopez.PryCertificacion.models.dao.ICuenta;
-import com.chachalopez.PryCertificacion.models.entities.Cuenta;
+import com.chachalopez.PryCertificacion.models.dao.IGarante;
+import com.chachalopez.PryCertificacion.models.entities.Garante;
 
 @Service
-public class CuentaService implements ICuentaService {
+public class GaranteService implements IGaranteService{
 
 	@Autowired //Inyeccion de dependencia, para instanciar
-	private ICuenta dao;//La dao interactua con la base de datos
+	private IGarante dao;//La dao interactua con la base de datos
 	
 	@Override
 	@Transactional
-	public void save(Cuenta cuenta) {	
-
-	
-	dao.save(cuenta);
+	public void save(Garante garante) {
+		dao.save(garante);
 		
 	}
 
 	@Override
 	@Transactional
-	public Cuenta findById(Integer id) {
+	public Garante findById(Integer id) {
 		// TODO Auto-generated method stub
 		return dao.findById(id).get();
 	}
@@ -41,8 +39,8 @@ public class CuentaService implements ICuentaService {
 
 	@Override
 	@Transactional
-	public List<Cuenta> findAll() {
+	public List<Garante> findAll() {
 		// TODO Auto-generated method stub
-		return (List<Cuenta>) dao.findAll();
+		return (List<Garante>) dao.findAll();
 	}
 }

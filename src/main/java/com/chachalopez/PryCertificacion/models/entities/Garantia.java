@@ -28,8 +28,8 @@ public class Garantia implements Serializable {
 	@Column(name="pk_garantia")	
 	private Integer idgarantia;
 	
-	@Column(name="tipo_garantia", length=1)
-	private String tipo_garantia;
+	@Column(name="nombre")
+	private String nombre;
 	
 	@Column(name="valor")
 	private Float valor;
@@ -59,6 +59,7 @@ public class Garantia implements Serializable {
 		this.prestamo = prestamo;
 	}
 	
+		
 //-------------------------------------------------------------------------	
 	public Garantia() {
 		super();
@@ -68,8 +69,6 @@ public class Garantia implements Serializable {
 		super();
 		this.idgarantia = id;
 	}
-
-	
 	
 	public Integer getIdgarantia() {
 		return idgarantia;
@@ -79,12 +78,11 @@ public class Garantia implements Serializable {
 		this.idgarantia = idgarantia;
 	}
 
-	public String getTipo_garantia() {
-		return tipo_garantia;
+	public String getNombre() {
+		return nombre;
 	}
-
-	public void setTipo_garantia(String tipo_garantia) {
-		this.tipo_garantia = tipo_garantia;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
 	public Float getValor() {

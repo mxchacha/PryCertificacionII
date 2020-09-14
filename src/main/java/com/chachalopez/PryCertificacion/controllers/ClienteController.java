@@ -6,6 +6,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
+
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,6 +38,7 @@ public class ClienteController {
 	  @GetMapping(value="/create")
 	  public String create(Model model) {
 		  Cliente cliente=new Cliente();
+		  cliente.setFechaIngreso(cliente.Ingreso());
 		  model.addAttribute("title", "Registro de nuevo cliente");
 		  model.addAttribute("cliente", cliente);/*Similar al ViewBag*/
 		  return "cliente/form";/*Ubicación de la vista*/
@@ -109,6 +112,12 @@ public class ClienteController {
 		  
 		  
 	  }
+	  
+	  @GetMapping(value="/search/{criteria}", produces="application/json")
+		public @ResponseBody List<Cliente> search(@PathVariable(value="criteria") String criteria, Model model) {
+			List<Cliente> lista = this.srvCliente.findByCedula(criteria);		
+			return lista;		
+		}
 
 	  
 }

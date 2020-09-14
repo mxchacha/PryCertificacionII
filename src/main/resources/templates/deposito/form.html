@@ -2,69 +2,74 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="layout :: frgHead"></head>
 <body id="page-top">
-
-	<div id="wrapper">
-		
-
-		<div id="content-wrapper" class="d-flex flex-column">
-
-			<div id="content">
-
-				<nav th:replace="layout :: frgSideBar"></nav>
-
-				<!-- Begin Page Content -->
-				<div class="container-fluid">
-
-					<!-- Page Heading -->
-					<div class="container">
-
-						<div class="card o-hidden border-0 shadow-lg my-5">
-							<div class="card-body p-0">
-								<!-- Nested Row within Card Body -->
-								<div class="row">
-									<div class="col-lg-7">
-										<div class="p-5">
-											<div class="text-center">
-												<h1 th:text="${title}" class="h4 text-gray-900 mb-4"></h1>
-											</div>
-											<form class="user" th:action="@{/deposito/save}"
-												th:object="${deposito}" method="post">
+<nav th:replace="layout :: frgSideBar"></nav>
+<br>
+<br>
+<div class="container shadow-lg my-5" >
+	<div class="col-12 text_align_center">
+		<h4 th:text="${title}"></h4>
+	</div>
+</div>			
+	<div class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 ">
+                    
+                        <form class="user" th:action="@{/deposito/save}" th:object="${deposito}" method="post">
+									<hr>
+												<div class="row  align-items-center">
+												<div class="col-4">	
+													<h6>Numero de cuenta</h6>														
+												</div>
+												<div class="col-4">	
+													<h6>Fecha deposito</h6>														
+												</div>
+												<div class="col-4">	
+													<h6>Cantidad</h6>														
+												</div>
 												
-												<hr>
-												<h6>N&uacute;mero de cuenta</h6>
-									            <div class="form.group row clo-sm-6">
-								                	<select class="form-control" th:field="*{cuenta.idcuenta}" >
+												</div>
+												<div class="row  align-items-center">
+													<div class="col-0.5">							
+														<i class="fa fa-address-card fa-2x"></i>													
+													</div>
+													<div class="col-3">
+														<select class="form-control" th:field="*{cuenta.idcuenta}" >
 								                		<option value=0>-- Seleccione --</option>
 								                		<option th:each="c : ${cuentas}" th:value="${c.idcuenta}" th:text="${c.toString()}">
 								                			
 								                		</option>
 								                	</select>
-									            </div>
-												<hr>
-												<h6>Fecha de Deposito:</h6>
-												<div class="form-group row">
-													<div class="col-sm-6 mb-3 mb-sm-0">
+													</div>
+													
+													<div class="col-0.5">											
+														<i class="fa fa-calendar-alt fa-2x"></i>													
+													</div>
+													<div class="col-3">
+														
 														<input type="date" class="form-control form-control-user"
 															th:field="*{fechaDeposito}" > 
+													
 													</div>
-												</div>
-												
-												<div class="form-group row">
-													<div class="col-sm-6 mb-3 mb-sm-0">
+													
+													<div class="col-0.5">											
+														<i class="fa fa-dollar-sign fa-2x"></i>													
+													</div>
+													<div class="col-3">
 														<input type="text" class="form-control form-control-user"
-															th:field="*{monto}" placeholder="Monto">
+															th:field="*{monto}" placeholder="Monto" th:errorclass="'form-control is-invalid'">
+															<small class="invalid-feedback" th:if="${#fields.hasErrors('monto')}" th:errors="*{monto}"></small>	
 													</div>
 												</div>
-
-
 												<hr>
-												<div class="form-group row">
-													<div class="col-sm-6 mb-3 mb-sm-0">
+												
+												<div class="row d-flex align-items-center">
+													<div class="col-sm-5 mb-3 mb-sm-0">
 														<input type="submit"
 															class="btn btn-success btn-user btn-block"
 															value="Guardar" />
 													</div>
-													<div class="col-sm-6 mb-3 mb-sm-0">
+													<div class="col-sm-5 mb-3 mb-sm-0">
 														<a th:href="@{/deposito/list}"
 															class="btn btn-danger btn-user btn-block">Cancelar</a>
 													</div>
@@ -73,27 +78,18 @@
 												<input type="hidden" th:field="*{iddeposito}" />
 
 											</form>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
+											<br>
+              
+                </div>
 
-					</div>
+               
+                </div>
+                    
+                </div>
+            </div>
 
-
-
-				</div>
-				<!-- /.container-fluid -->
-
-			</div>
-
-			<footer th:replace="layout :: frgFooter"></footer>
-
-		</div>
-
-	</div>
-
+<footer th:replace="layout :: frgFooter"></footer>
+<div th:replace="layout :: frgScripts"> </div>
 
 </body>
 </html>

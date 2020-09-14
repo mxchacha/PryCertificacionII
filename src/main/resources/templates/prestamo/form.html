@@ -69,20 +69,8 @@
 															th:field="*{tiempo}" placeholder="Tiempo">
 													</div>
 												</div>
-												<hr>
-												<div class="row">
-												<div class="col-10">
-													<h4>Detalles prestamo</h4>
-													</div>
-													<div class="col-2">
-														<button type="button" class="btn btn-success" id="btnAdd" data-toggle="modal"
-													data-target="#exampleModal"><i class="fas fa-plus-circle"></i>&nbsp;Nuevo</button>
-													
-													</div>
-												</div>
-												<div id="lstGarantias"></div>
-
-												<hr>
+												
+												
 												<div class="form-group row">
 													<div class="col-sm-6 mb-3 mb-sm-0">
 														<input type="submit"
@@ -94,13 +82,28 @@
 															class="btn btn-danger btn-user btn-block">Cancelar</a>
 													</div>
 												</div>
-												
 												<input type="hidden" th:field="*{idprestamo}" />
 								
 								
 										</form>
 											
 										
+												
+										<hr>
+										<div class="row">
+										<div class="col-10">
+											<h4>Detalles prestamo</h4>
+											</div>
+											<div class="col-2">
+												<button type="button" class="btn btn-success" id="btnAdd" data-toggle="modal"
+											data-target="#modalGarante"><i class="fas fa-plus-circle"></i>&nbsp;Nuevo</button>
+											
+											</div>
+										</div>
+										<div id="lstGarantes"></div>
+
+
+										<hr>
 								
 								
 								
@@ -124,37 +127,34 @@
 
 				</div>
 				<!-- /.container-fluid -->
-				<!-- Modal -->
-			<div class="modal fade" id="exampleModal" tabindex="-1"
-				aria-labelledby="exampleModalLabel" aria-hidden="true">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title " id="exampleModalLabel">Detalles del
-								prestamo</h5>
-							<button type="button" class="close" data-dismiss="modal"
-								aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
-						</div>
-						<div class="modal-body" id="frmGarantia"></div>
-						<div class="modal-footer">
-							<button id="btnSubmit" type="button" class="btn btn-success btn-user" data-dismiss="modal">Guardar</button>
-							<button type="button" class="btn btn-danger btn-user "
-								data-dismiss="modal">Cancelar</button>
-
+				<!-- Modal de matrícula -->
+				<div class="modal fade" id="modalGarante" tabindex="-1" role="dialog"
+					aria-labelledby="exampleModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title">Agregar Garante</h5>
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body contact-area contact-content-modal" id="contentFrmGarante">
+							</div>
+							<div class="modal-footer">
+								<button id="btnSubmit" type="button" class="btn btn-sm academy-btn btn-3" data-dismiss="modal">Guardar</button>
+								<button type="button" class="btn btn-sm academy-btn btn-2"
+									data-dismiss="modal">Cancelar</button>
+							</div>
 						</div>
 					</div>
-				</div>
 			</div>
-		</div>
-		<!-- End of Page Wrapper -->
 
 			</div>
 
 			<footer th:replace="layout :: frgFooter"></footer>
 			<div th:replace="layout :: frgScripts"></div>
-			<script th:src="@{/js/prestamo/add-garantias.js}"></script>
+			
 
 		</div>
 

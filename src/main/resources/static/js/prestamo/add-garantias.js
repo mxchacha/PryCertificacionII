@@ -11,7 +11,7 @@ function searchByCedula(){
 			if(count > 0){								
 				$("#clienteid").addClass('visible').removeClass('invisible');
 				$.each( response, function(index, cliente) {					
-					$("#clienteid").append("<option value='"+ persona.cliente.idpersona +"'>" + cliente.nombre + " " + cliente.apellido + "</option>");					
+					$("#clienteid").append("<option value='"+ cliente.idpersona +"'>" + cliente.nombre + " " + cliente.apellido + "</option>");					
 				});
 			}
 			else{
